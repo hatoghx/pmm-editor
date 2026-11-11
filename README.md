@@ -25,7 +25,7 @@ An English version of the documents is available in [docs-en](docs-en/00-index.m
 
 ## 権利表記
 
-MikuMikuDance は樋口優氏、MikuMikuEffect は舞力介入P氏の作品です。この資料は相互運用のために両ソフトのファイル形式を記録した非公式のもので、両氏とは関係ありません。
+MikuMikuDance は樋口優氏、MikuMikuEffect は舞力介入P氏の作品です。この資料は相互運用のために両ソフトのファイル形式を記録した非公式のもので、両氏との関係はありません。
 
 ## ライセンス
 
