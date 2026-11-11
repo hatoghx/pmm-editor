@@ -25,6 +25,6 @@ An English version of the documents is available in [docs-en](docs-en/00-index.m
 
 ## ライセンス
 
-GNU General Public License バージョン3（GPL-3.0-only）
+MIT License
 
 Copyright (C) 2026 hato
