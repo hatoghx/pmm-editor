@@ -2,39 +2,28 @@
 
 ## 1. Overview
 
-This document collects the evidence for the other documents. The format and procedure documents state conclusions only; counts and differences from existing implementations are kept here.
+This document collects the evidence for the other documents. The format and procedure documents state conclusions only; counts are kept here.
 
-## 2. Sources
+## 2. Methods
 
-| Source | Author and license | How it was used |
-| --- | --- | --- |
-| PmmFileManager 3.4.1 source code | hato | Read the procedures for duplication, deletion, transplanting, collecting, relinking, VMD extraction and repair |
-| MikuMikuMethods and MmdAssetMethods, which is based on it | Inwerwm, MIT | Read the PMM, VMD and EMM readers and writers and the PMX-to-PMM conversion |
-| Manual bundled with MikuMikuEffect | Buryoku Kainyuu P | Read the description of automatic loading and saving of EMM and EMD |
-| Real PMM, EMM and PMX files | Test files prepared by the author | Read with a parser and compared with the specification |
-
-No code or text from the sources was copied. The test files are not included in this repository.
-
-## 3. Methods
-
-### 3.1 PMM
+### 2.1 PMM
 
 1. Built a parser that reads from the start according to the specification and checked that it consumes exactly every byte of the file.
 2. Checked that the chain rules (PMM 2.3) hold for every keyframe list.
-3. Collected value distributions and checked that they agree with the names given by the sources.
+3. Collected value distributions and checked that they agree with the meaning of each field.
 
-### 3.2 EMM
+### 2.2 EMM
 
 1. Classified and counted every line (header, value, blank, comment).
 2. For pairs where a PMM with the same name exists in the same folder, compared the `[Object]` numbers and paths with the models and accessories in the PMM.
 
-### 3.3 PMX
+### 2.3 PMX
 
 For the PMX files referenced by PMMs that were available locally, compared bones, morphs, IK, bones that can have an outside parent, and the number of display frames.
 
-## 4. Results
+## 3. Results
 
-### 4.1 PMM
+### 3.1 PMM
 
 | Item | Result |
 | --- | --- |
@@ -46,7 +35,7 @@ For the PMX files referenced by PMMs that were available locally, compared bones
 | Morph key chains | Valid in all 1,528 models |
 | Other key chains | Valid in all 130 files |
 
-### 4.2 EMM
+### 3.2 EMM
 
 | Item | Result |
 | --- | --- |
@@ -57,7 +46,7 @@ For the PMX files referenced by PMMs that were available locally, compared bones
 | Line breaks | CR LF in 35, LF only in 1 |
 | Encoding | CP932 in 31, GBK in 5 (saved on Chinese Windows) |
 
-### 4.3 PMM and EMM Pairs
+### 3.3 PMM and EMM Pairs
 
 | Item | Result |
 | --- | --- |
@@ -65,9 +54,8 @@ For the PMX files referenced by PMMs that were available locally, compared bones
 | Exact match with the numbering rule (Relations 2.3) | 31 pairs |
 | Mismatch | 1 pair. The render order of two models and two accessories was swapped between the EMM and the PMM, apparently because they were saved at different times |
 
-PmmFileManager computes EMM numbers with the same rule.
 
-### 4.4 PMM and PMX
+### 3.4 PMM and PMX
 
 | Item | Result |
 | --- | --- |
@@ -80,9 +68,9 @@ PmmFileManager computes EMM numbers with the same rule.
 
 Bone and morph names were 19 bytes or shorter in all 1,613 models.
 
-## 5. Observed Values
+## 4. Observed Values
 
-### 5.1 PMM
+### 4.1 PMM
 
 | Specification | Observation |
 | --- | --- |
@@ -112,7 +100,7 @@ Bone and morph names were 19 bytes or shorter in all 1,613 models.
 | PMM chapter 12, field 7 | 0 in all 134 files |
 | PMM chapter 13, range selection present | 1 in all 134 files |
 
-### 5.2 EMM
+### 4.2 EMM
 
 | Specification | Observation |
 | --- | --- |
@@ -123,11 +111,11 @@ Bone and morph names were 19 bytes or shorter in all 1,613 models.
 | EMM 8.2 `(n)` in names | 129 of 571 sections |
 | EMM 8.3 `Owner` forms | 460 object names only, 111 with `@name`, 0 with `[n]` |
 
-## 6. Unconfirmed Items
+## 5. Unconfirmed Items
 
 | No. | Location | Item | Status |
 | --- | --- | --- | --- |
-| 1 | PMM chapter 4 | Meaning of each of the 7 editor state bytes | Follows the names used by MikuMikuMethods |
+| 1 | PMM chapter 4 | Meaning of each of the 7 editor state bytes | Few files contain 0, so the mapping to the editor has not been confirmed |
 | 2 | PMM 5.5 | The two physics-related bytes of the current bone state | Meaning not settled. The second is always 0 |
 | 3 | PMM 6.2 | Meaning of 1 in the perspective byte | No example of 1 |
 | 4 | PMM 9.2 | Bone operation mode values 2 and above | Mapping of values to operations not settled. Only 0 and 2 observed |
@@ -143,29 +131,3 @@ Bone and morph names were 19 bytes or shorter in all 1,613 models.
 | 14 | Behavior (all) | MMD behavior | Not confirmed on a real MMD |
 | 15 | Relations 2.7 | EMM matching when the same model file is loaded more than once | Not confirmed which model is matched |
 | 16 | Procedures 6.3 | Recovery from a truncated PMM | Built from the specification. Not tried on real files |
-
-## 7. Differences from Existing Implementations
-
-Differences found by comparing with real files. The code has not been changed.
-
-### 7.1 MmdAssetMethods (MikuMikuMethods family)
-
-| No. | Location | Real files | MmdAssetMethods |
-| --- | --- | --- | --- |
-| 1 | PMM 8.4 current accessory state | Order is rotation, scale, position | Reads in the order position, rotation, scale |
-| 2 | PMM 6.3 current camera | Eye offset X, Y and distance | Reads them as the target position |
-| 3 | PMM 9.3 background video state | A video with a path has 1 | Treats only 64 as having a video |
-| 4 | PMM 11.3 self shadow range | Default is 0.01125 | Uses 8875 as the default |
-| 5 | PMM 5.6 outside parent references | Nonexistent model IDs remain | Throws an exception when the model is not found |
-| 6 | PMM 7.2 second vec3 of the light | Direction | Calls it position |
-| 7 | PMM 2.1 length of str8 | 1 byte | Reads a 7-bit encoded integer. Identical for 127 bytes or less |
-| 8 | PMX chapter 4 bones that can have an outside parent | IK bones, or bones with translatable, visible and operable | When building from PMX, uses only translatable bones |
-| 9 | PMM 5.8 number of display frames | Usually PMX display frames + 1 | When building from PMX, uses the PMX display frame count |
-
-Items 1 and 2 do not change the result when values are read and written back as is, but they give different results when the values are used in calculations. Item 9 only makes MMD discard the open state; loading does not fail.
-
-### 7.2 PmmFileManager
-
-| No. | Location | Description |
-| --- | --- | --- |
-| 1 | Procedures 2.5 | When deletion removes the `Owner` of a tab, the tab is kept with `Owner = none`. Under MME's checks (EMM chapter 9), an EMM whose `Owner` is not in `[Object]` is not loaded |

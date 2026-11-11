@@ -17,11 +17,15 @@ MikuMikuDance のプロジェクトファイル（PMM）と、MikuMikuEffect の
 | 7 | [MMD の動作](docs/07-mmd-behavior.md) | パスの探し方、PMM の開き方の違い |
 | 8 | [作業の手順](docs/08-operations.md) | 複製、削除、外部親、モーション、修復、収集、再リンク、新規作成 |
 | 9 | [質問と手順の対応](docs/09-question-guide.md) | 依頼の例から手順を選ぶ表 |
-| 10 | [検証記録](docs/10-verification.md) | 根拠、観測した値、未確定の事項、既存実装との違い |
+| 10 | [検証記録](docs/10-verification.md) | 根拠、観測した値、未確定の事項 |
 
 ## English
 
 An English version of the documents is available in [docs-en](docs-en/00-index.md).
+
+## 権利表記
+
+MikuMikuDance は樋口優氏、MikuMikuEffect は舞力介入P氏の作品です。この資料は相互運用のために両ソフトのファイル形式を記録した非公式のもので、両氏とは関係ありません。
 
 ## ライセンス
 

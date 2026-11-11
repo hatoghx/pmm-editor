@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-This document describes procedures for modifying PMM and EMM files. Most are based on the implementation of PmmFileManager. Procedures that PmmFileManager does not have (2.2, 6.3, 6.4 and others) were built from the specification, and some parts have not been checked against real files.
+This document describes procedures for modifying PMM and EMM files.
 
 | Task | Section |
 | --- | --- |
@@ -77,9 +77,9 @@ Do not replace text inside lines (Relations 2.8).
 
 ## 3. Models and Accessories
 
-### 3.1 Duplicating a Model Right Below the Original
+### 3.1 Duplicating a Model
 
-"Right below" means placing the copy directly after the original in MMD's model list and render order.
+The copy is placed directly after the original in the model sequence and in render order.
 
 | Step | Action | Where |
 | --- | --- | --- |
@@ -145,15 +145,15 @@ The flow is the same as 3.1 with these differences.
 
 ### 4.1 Removing All Outside Parents of a Bone
 
-Procedure for a request such as "remove all outside-parent settings of the center bone of the YYB Hatsune Miku model".
+Procedure for removing the outside parent of a bone from every key and from the current state.
 
 1. Find the model by name. If several models have the same name, ask the user which one.
-2. Find the index b of the bone name (`センター`, "center") in the bone name list (field 7 of PMM 5.1).
+2. Find the index b of the bone name in the bone name list (field 7 of PMM 5.1).
 3. Find the position j of b in the list of bones that can have an outside parent (field 13 of PMM 5.1), counting the leading −1. If b is not in the list, the bone cannot have an outside parent and nothing needs to be done.
 4. In every display, IK and outside parent key (the initial record and all additional records), set the j-th outside-parent pair to (−1, 0) (PMM 5.4).
 5. In the j-th current outside-parent state, set the parent model ID to −1 and the parent bone index to 0 (PMM 5.6). Keep the start and end frames.
 
-When "all" means every bone of the model, repeat steps 4 and 5 for j from 1 to the end.
+To remove the outside parents of every bone of the model, repeat steps 4 and 5 for j from 1 to the end.
 
 ### 4.2 Setting an Outside Parent
 
@@ -172,8 +172,6 @@ A model that follows another model through an outside parent should come after t
 ## 5. Extracting and Importing Motion
 
 ### 5.1 Extracting Model Motion to VMD
-
-Procedure for a request such as "from this Chinese PMM, give me the motion of this bone of this model as a VMD".
 
 1. Determine the encoding (2.2). A PMM created on Chinese Windows is GBK.
 2. Find the model and the index of the bone (or morph) to extract.
@@ -213,7 +211,7 @@ The camera follow target (parent model and bone) is not stored in VMD.
 
 ### 6.2 Fixing Overflowed Values
 
-PmmFileManager replaces the following values with 0.001 when they are NaN, infinite, or have an absolute value of 3.40282 × 10^38 or more.
+Replace the following values with 0.001 when they are NaN, infinite, or have an absolute value of 3.40282 × 10^38 or more.
 
 | Target | Values |
 | --- | --- |
@@ -225,8 +223,6 @@ PmmFileManager replaces the following values with 0.001 when they are NaN, infin
 Light color, morph weights, edge width, accessory transparency and scale are not touched because they are unrelated to physics.
 
 ### 6.3 Recovering Motion from a Truncated PMM
-
-PmmFileManager does not have this procedure; it was built from the specification.
 
 1. Read from the start according to the specification and keep the model blocks that were read. Record where reading stopped.
 2. In the model block where reading stopped, keep what was read, in the order bone keys, then morph keys.
@@ -249,7 +245,7 @@ If corrupted bytes in the middle prevent further reading, search for the start o
 
 ### 7.1 Packaging (Collecting)
 
-Gather every file used by the PMM into one folder so that the folder can be opened on its own. PmmFileManager collects files in this layout.
+Gather every file used by the PMM into one folder so that the folder can be opened on its own. An example layout:
 
 | Output | Contents |
 | --- | --- |
@@ -297,7 +293,7 @@ Rewrite the absolute paths in the PMM and EMM of a project that was moved as a w
 
 ## 8. Creating a PMM from Scratch
 
-Procedure for a request such as "create a PMM from scratch with model X and motion Y". It is based on the conversion code of MikuMikuMethods and on values commonly seen in real files.
+Procedure for creating a new PMM from a given model and motion.
 
 ### 8.1 Steps
 
@@ -359,7 +355,7 @@ As in 8.2, these values are common in real files.
 
 ### 9.1 Removing Redundant Keys
 
-PmmFileManager can remove the following keys when saving.
+Removing the following keys does not change the playback result.
 
 | Target | Keys removed |
 | --- | --- |

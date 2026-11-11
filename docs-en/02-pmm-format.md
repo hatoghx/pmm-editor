@@ -1,14 +1,12 @@
 # PMM File Format
 
-This is an unofficial description of a MikuMikuDance (by Yu Higuchi) file format, written for interoperability. It is not affiliated with the author of MikuMikuDance.
-
 ## 1. Overview
 
 PMM is the project file of MikuMikuDance. A single binary file holds the models, camera, light, accessories, keyframes and editor state. This document covers format version 0002.
 
 Terms are defined in [Basics](01-basics.md). The relationship to PMX is described in [PMX Reference](05-pmx-reference.md) and [File Relationships](06-relations.md). How MMD opens a PMM is described in [MMD Behavior](07-mmd-behavior.md).
 
-Items whose meaning has not been confirmed are marked "unconfirmed" in the tables. The reasons are listed in chapter 6 of [Verification](10-verification.md).
+Items whose meaning has not been confirmed are marked "unconfirmed" in the tables. The reasons are listed in chapter 5 of [Verification](10-verification.md).
 
 ## 2. Notation and Common Structures
 
@@ -31,7 +29,6 @@ Items whose meaning has not been confirmed are marked "unconfirmed" in the table
 - After the NUL of a fix(N) field, leftovers of previously used strings may remain. When reading, cut at the first NUL. When writing, fill everything after the NUL with zeros.
 - Paths are absolute or relative. How relative paths are resolved is described in chapter 2 of [MMD Behavior](07-mmd-behavior.md).
 - Bone and morph names are the PMX names converted to the ANSI code page and truncated to 19 bytes. The cut may fall in the middle of a double-byte character. Characters that the code page cannot represent are lost.
-- PmmFileManager warns when a model name exceeds 49 bytes.
 
 ### 2.3 Keyframe Lists
 
@@ -234,7 +231,7 @@ The model ID is the number that identifies a model inside the PMM. It is referen
 - Accessory parents (8.3 and 8.4)
 - The extension (chapter 13)
 
-In files saved by MMD, IDs do not always run from 0 in order. A writer may renumber them from 0. In that case every reference above must be rewritten with the same mapping. PmmFileManager does this.
+In files saved by MMD, IDs do not always run from 0 in order. A writer may renumber them from 0. In that case every reference above must be rewritten with the same mapping.
 
 For most models, the number of display frames is the number of PMX display frames plus 1. Some models have the same number as the PMX. When this number does not match the loaded model, MMD ignores the open state of the display frames and continues. A mismatch therefore does not make loading fail.
 

@@ -8,10 +8,8 @@ This document collects the background needed to work with PMM and EMM files. The
 
 | Name | Description |
 | --- | --- |
-| MikuMikuDance (MMD) | Free Windows software for animating 3D characters and making videos. Created by Yu Higuchi. This material is based on version 9.32 |
-| MikuMikuEffect (MME) | An add-on for MMD that changes the rendered look with shaders. Created by Buryoku Kainyuu P |
-| MikuMikuMethods | A C# library that reads and writes PMM and related files. Created by Inwerwm. The format descriptions in this material are based on this implementation |
-| PmmFileManager | A tool that edits PMM and EMM files without MMD. The procedures in this material are based on this tool's implementation |
+| MikuMikuDance (MMD) | Free Windows software for animating 3D characters and making videos. This material is based on version 9.32 |
+| MikuMikuEffect (MME) | An add-on for MMD that changes the rendered look with shaders |
 
 ## 3. File Types
 

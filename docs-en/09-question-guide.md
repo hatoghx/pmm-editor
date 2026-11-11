@@ -2,99 +2,88 @@
 
 ## 1. Overview
 
-This table maps user questions and requests to the documents and procedures to use. Every procedure listed here points to a section of another document.
-
-Short section names such as "Procedures 3.1" follow chapter 3 of the [Index](00-index.md).
+This table maps questions and requests to the sections to use. Short section names such as "Procedures 3.1" follow chapter 3 of the [Index](00-index.md).
 
 ## 2. Rules for Every Request
 
 1. Do not overwrite the original PMM and EMM; write the result under a different name (Procedures 2.1).
 2. Determine the encoding before reading (Procedures 2.2).
 3. If an EMM with the same name exists, read it together with the PMM and write them together (Relations 2.1).
-4. When a model or bone name does not exactly match the user's words, show the candidates and confirm. Model names often have extra words at the end, such as "YYB式鏡音リン_10th".
+4. When a model or bone name does not exactly match the words of the request, show the candidates and confirm. Model names often end with a version or costume name.
 5. After writing, read the file again and confirm that it reads to the last byte (Procedures 2.1).
 6. Report what was changed with model names, bone names and counts.
 
-## 3. Example Requests and Procedures
+## 3. Questions and Sections
 
-### 3.1 "Duplicate the model YYB Kagamine Rin right below the original"
+### 3.1 Models and Accessories
 
-| Item | Content |
-| --- | --- |
-| Confirm | The target model (when several names match) |
-| Procedure | Procedures 3.1 |
-| EMM | Always renumber (Procedures 2.5). Ask whether effects should be copied as well; if so, use Procedures 3.2 |
-| Notes | The model limit is 255 |
+| Example question | Confirm | Sections |
+| --- | --- | --- |
+| I want to duplicate a model | Target model, where to place it, whether to copy effects | Procedures 3.1, 3.2 |
+| I want to duplicate an accessory | Target accessory | Procedures 3.3 |
+| I want to delete a model or accessory | Target, whether other models use it as an outside parent | Procedures 3.4 |
+| I want to change the render order | The new order | Procedures 3.5 |
+| I want to bring a model from another PMM | Source and destination, whether both have an EMM | Procedures 3.6 |
+| I want to replace a model with another model that has the same bones | Path of the new model | Relations 3.3, field 4 of PMM 5.1, Relations 2.8 |
+| I want a list of the models and bones in a PMM | | PMM 5.1 |
+| What are the limits on models and accessories? | | Procedures 2.6 |
 
-### 3.2 "Remove all outside-parent settings of the center bone of YYB Hatsune Miku"
+### 3.2 Outside Parents and Follow
 
-| Item | Content |
-| --- | --- |
-| Confirm | The target model. Whether the center bone can have an outside parent (field 13 of PMM 5.1) |
-| Procedure | Procedures 4.1 |
-| EMM | No change |
-| Notes | Clear both the per-key outside parents (PMM 5.4) and the current state (PMM 5.6) |
+| Example question | Confirm | Sections |
+| --- | --- | --- |
+| I want to remove the outside parent of a bone | Target model and bone, whether the bone can have an outside parent | Procedures 4.1 |
+| I want to set or change an outside parent | Child and parent model and bone, frames to apply | Procedures 4.2 |
+| I want to attach an accessory to a bone of a model | Accessory, model, bone | PMM 8.3, 8.4 |
+| I want the camera to follow a bone | Target model and bone | Procedures 4.3 |
+| Which models follow which models through outside parents? | | PMM 5.4, 5.6 |
 
-### 3.3 "I have a Chinese PMM. Give me the motion of this bone of this model as a VMD"
+### 3.3 Motion
 
-| Item | Content |
-| --- | --- |
-| Confirm | The encoding (Procedures 2.2; usually GBK), the target model and bone, and the environment where the VMD will be used (Japanese MMD or not) |
-| Procedure | Procedures 5.1 |
-| Notes | Convert names to the encoding of the target environment (Relations 4.3). VMD bone names are limited to 15 bytes (Relations 4.2) |
+| Example question | Confirm | Sections |
+| --- | --- | --- |
+| I want a model's motion as a VMD | Model, whether to limit bones or morphs, encoding of the target environment | Procedures 5.1 |
+| I want only a range of frames as a VMD | Start and end frames | Procedures 5.1 (filter the collected keys by frame) |
+| I want the camera or light motion as a VMD | Whether to include light and self shadow | Procedures 5.2 |
+| I want to load a VMD into a model or the camera | Target, whether to overwrite | Procedures 5.3 |
+| I want to extract from a PMM made on Windows in another language | Original encoding, encoding of the target environment | Procedures 2.2, Relations 4.3 |
 
-### 3.4 "This PMM is broken. Can you at least extract the motion?"
+### 3.4 File Condition
 
-| Item | Content |
-| --- | --- |
-| Confirm | How it is broken (MMD cannot open it, or it opens but the motion is wrong) |
-| Procedure | Identify the damage with Procedures 6.1, then repair or recover with 6.2 to 6.4. Then extract to VMD with Procedures 5.1 |
-| Notes | In a truncated file, models after the cut may not be recoverable |
+| Example question | Confirm | Sections |
+| --- | --- | --- |
+| The PMM is broken and will not open; I want at least the contents | How it is broken | Procedures 6.1 to 6.5, 5.1 |
+| Objects fly away or values look wrong when opened | | Procedures 6.2 |
+| Names or paths are garbled | Language of the system that created the file | Procedures 2.2, 9.3 |
+| Is this file a PMM, and which version? | | PMM chapter 4, Appendix A |
+| I want a smaller file | | Procedures 9.1 |
+| I want to turn physics off | | Procedures 9.2 |
+| I want to change the output size, playback range or frame rate | The new values | PMM chapter 4, 9.1 |
 
-### 3.5 "Duplicate this model together with its effects"
+### 3.5 Paths and Moving Files
 
-| Item | Content |
-| --- | --- |
-| Confirm | The target model. Whether an EMM with the same name exists |
-| Procedure | Procedures 3.1 and 3.2 |
-| Notes | Offscreen tabs owned by the original model are not duplicated (Procedures 3.2) |
+| Example question | Confirm | Sections |
+| --- | --- | --- |
+| I want a list of the files the PMM uses | Location of the MMD executable folder | Step 1 of Procedures 7.1, 7.2 |
+| I want to gather the PMM and its assets into one folder | Output folder, location of the MMD executable folder | Procedures 7.1, 7.2 |
+| I moved the whole folder and want the paths to follow | Folders before and after the move | Procedures 7.3 |
+| MMD says a model cannot be found | Path in the PMM, how it was opened | Behavior chapter 2, 4.1, Procedures 7.3 |
+| Effects were lost after moving to another PC | Whether the EMM exists and its name, paths | Relations 2.1, 2.6, 2.7 |
+| Which model is `Pmd3` in the EMM? | | Relations 2.3 |
+| Effects shifted after changing render order | | Relations 2.8, Procedures 2.5 |
 
-### 3.6 "Package this PMM"
+### 3.6 Creating New Files
 
-| Item | Content |
-| --- | --- |
-| Confirm | The output folder. The location of the MMD executable folder (to resolve UserFile relative paths) |
-| Procedure | Procedures 7.1 and 7.2 |
-| Notes | List files that cannot be found. Abort if a path exceeds 255 bytes |
+| Example question | Confirm | Sections |
+| --- | --- | --- |
+| I want to create a PMM from a given model and motion | PMX path, VMD path, whether there is a camera VMD, output location | Procedures chapter 8 |
+| I want to create an empty PMM | Output location | Procedures 8.2 |
 
-### 3.7 "Create a PMM from scratch. The model is X and the motion is Y"
+### 3.7 Opening Files in MMD
 
-| Item | Content |
-| --- | --- |
-| Confirm | Path of the model PMX, path of the motion VMD, whether there is a camera VMD, the output location |
-| Procedure | Procedures chapter 8 |
-| Notes | Keys whose VMD bone names do not match the PMX are not imported (Procedures 5.3) |
-
-### 3.8 "In MMD, what is the difference between opening a PMM by dropping it on the exe icon, opening it from the menu, and dropping it on the window? Which is best?"
-
-| Item | Content |
-| --- | --- |
-| Answer | Show the differences with the table of Behavior 3.1 and give the recommendation of Behavior 3.3 |
-| Key points | Dropping on the exe passes an ANSI string, so some characters cannot be used. The current folder differs by method, so relative paths are found differently |
-
-## 4. Frequently Asked Questions
-
-| Question | Where the answer is |
-| --- | --- |
-| MMD says the model cannot be found | Behavior chapter 2 (path resolution), Procedures 7.3 (after moving a project) |
-| Effects were lost after moving to another PC | Relations 2.6, 2.7 |
-| List the files this PMM uses | Step 1 of Procedures 7.1 and 7.2 |
-| Which model is `Pmd3` in the EMM? | Relations 2.3 |
-| Effects shifted after changing render order | Relations 2.8, Procedures 3.5 |
-| How many models can a PMM hold? | Procedures 2.6 |
-| I want the camera motion as a VMD | Procedures 5.2 |
-| I want to set or change an outside parent | Procedures 4.2 |
-| I want to load a VMD into a model in the PMM | Procedures 5.3 |
-| Objects fly away or values look wrong | Procedures 6.2 |
-| I want a smaller file | Procedures 9.1 |
-| I want to fix a PMM with garbled text | Procedures 2.2, 9.3 |
+| Example question | Confirm | Sections |
+| --- | --- | --- |
+| What is the difference between dropping on the exe, using the menu and dropping on the window, and which is best? | | Behavior chapter 3 |
+| Where are relative paths resolved from? | | Behavior chapter 2 |
+| MMD says the model structure differs | | Relations 3.2 |
+| Why is the EMM loaded when I open a PMM? | | Relations 2.1, 2.2 |

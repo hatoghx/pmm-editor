@@ -130,7 +130,7 @@ If the model is replaced with another model that has the same bone names, the mo
 
 ### 4.2 Name Length
 
-VMD bone and morph names are limited to 15 bytes; PMM allows 19 bytes. Names of 16 to 19 bytes are truncated when written to VMD and may not match the original bone when loaded. MikuMikuMethods inserts keys only into bones and morphs whose names match exactly.
+VMD bone and morph names are limited to 15 bytes; PMM allows 19 bytes. Names of 16 to 19 bytes are truncated when written to VMD and may not match the original bone when loaded.
 
 ### 4.3 Encoding
 

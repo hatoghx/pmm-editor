@@ -1,7 +1,5 @@
 # EMM File Format
 
-This is an unofficial description of a MikuMikuEffect (by Buryoku Kainyuu P) file format, written for interoperability. It is not affiliated with the author of MikuMikuEffect.
-
 ## 1. Overview
 
 EMM is a text file in which MikuMikuEffect (MME below) stores effect assignments. It records which effect file is assigned to which model or accessory.
