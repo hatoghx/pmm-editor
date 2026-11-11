@@ -12,16 +12,16 @@ Items whose meaning has not been confirmed are marked "unconfirmed" in the table
 
 ### 2.1 Types
 
-| Notation | Meaning |
-| --- | --- |
-| u8 | Unsigned 1-byte integer |
-| i32 | Signed 4-byte integer (little endian) |
-| f32 | IEEE 754 single-precision float (little endian) |
-| vec3 | Three f32 values (x, y, z) |
-| quat | Four f32 values (x, y, z, w) |
-| bool | u8. 0 is false, 1 is true |
-| str8 | A length (u8) followed by that many bytes |
-| fix(N) | A fixed N-byte string. The value ends at the first NUL; the remaining bytes are undefined |
+| Notation | Other names | Meaning |
+| --- | --- | --- |
+| u8 | byte, uint8 | Unsigned 1-byte integer |
+| i32 | int, int32 | Signed 4-byte integer (little endian) |
+| f32 | float, single | IEEE 754 single-precision float (little endian) |
+| vec3 | Vector3 | Three f32 values (x, y, z) |
+| quat | Quaternion, Vector4 | Four f32 values (x, y, z, w) |
+| bool | | u8. 0 is false, 1 is true |
+| str8 | VString (variable-length string) | A length (u8) followed by that many bytes |
+| fix(N) | CString (fixed-length string) | A fixed N-byte string. The value ends at the first NUL; the remaining bytes are undefined |
 
 ### 2.2 Strings
 
@@ -197,8 +197,8 @@ Outside-parent values follow these rules.
 | --- | --- | --- |
 | Translation | vec3 | |
 | Rotation | quat | |
-| Physics off | bool | Unconfirmed |
-| Unknown | bool | Unconfirmed |
+| Physics off | bool | 1 turns physics off for the current pose |
+| Unregistered change | bool | 1 means the bone was moved by hand and not yet registered as a key |
 | Selected | bool | |
 
 ### 5.6 Current Outside-Parent State (16 bytes)
@@ -253,7 +253,7 @@ For most models, the number of display frames is the number of PMX display frame
 | Parent model ID | i32 | −1 if none |
 | Parent bone index | i32 | Ignore when the parent model ID is −1 |
 | Interpolation curves | 24 bytes | See 2.4 |
-| Perspective | bool | Unconfirmed (the meaning of 1 is not settled) |
+| Perspective | bool | 0 is perspective projection, 1 is orthographic projection |
 | View angle | i32 | Degrees |
 | Selected | bool | |
 
@@ -394,7 +394,9 @@ The background video and background image fields are present even when the path 
 | --- | --- |
 | 0 | Select |
 | 1 | Rectangle select |
-| 2 or more | Unconfirmed |
+| 2 | No button pressed |
+| 3 | Rotate |
+| 4 | Move |
 
 ### 9.3 Background Video State
 

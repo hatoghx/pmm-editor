@@ -116,9 +116,6 @@ Bone and morph names were 19 bytes or shorter in all 1,613 models.
 | No. | Location | Item | Status |
 | --- | --- | --- | --- |
 | 1 | PMM chapter 4 | Meaning of each of the 7 editor state bytes | Few files contain 0, so the mapping to the editor has not been confirmed |
-| 2 | PMM 5.5 | The two physics-related bytes of the current bone state | Meaning not settled. The second is always 0 |
-| 3 | PMM 6.2 | Meaning of 1 in the perspective byte | No example of 1 |
-| 4 | PMM 9.2 | Bone operation mode values 2 and above | Mapping of values to operations not settled. Only 0 and 2 observed |
 | 5 | PMM 9.3 | The 64 bit of the background video state | Appears only in files with an empty path |
 | 6 | PMM 11.3 | Conversion formula for the self shadow range | Inferred only from the default value |
 | 7 | PMM chapter 12 | Meaning of field 7 | Always 0 |
