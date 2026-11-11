@@ -1,8 +1,5 @@
 # VMD ファイル形式
 
-Copyright (C) 2026 hato  
-GNU General Public License バージョン3（GPL-3.0-only）
-
 ## 1. 概要
 
 VMD は動きだけを記録するファイルです。PMM からモーションを取り出すときと、PMM にモーションを取り込むときに使います。本書ではその作業に必要な範囲を記録します。

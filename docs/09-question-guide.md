@@ -1,22 +1,10 @@
 # 質問と手順の対応
 
-Copyright (C) 2026 hato  
-GNU General Public License バージョン3（GPL-3.0-only）
-
 ## 1. 概要
 
 利用者の質問や依頼から、どの文書のどの手順を使うかを決めるための表です。本書の手順はすべて、ほかの文書の節を指します。
 
-| 略称 | 文書 |
-| --- | --- |
-| 基礎 | [基礎知識](01-basics.md) |
-| PMM | [PMM ファイル形式](02-pmm-format.md) |
-| EMM | [EMM ファイル形式](03-emm-format.md) |
-| VMD | [VMD ファイル形式](04-vmd-format.md) |
-| PMX | [PMX の参照部分](05-pmx-reference.md) |
-| 関係 | [ファイル同士の関係](06-relations.md) |
-| 動作 | [MMD の動作](07-mmd-behavior.md) |
-| 作業 | [作業の手順](08-operations.md) |
+節番号の略称（「作業 3.1」など）は [目次](00-index.md) の 3 章のとおりです。
 
 ## 2. どの依頼でも守ること
 

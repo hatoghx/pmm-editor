@@ -1,8 +1,5 @@
 # MMD の動作
 
-Copyright (C) 2026 hato  
-GNU General Public License バージョン3（GPL-3.0-only）
-
 ## 1. 概要
 
 MMD 9.32 が PMM を開くときの動作をまとめます。実機での確認はしていません。

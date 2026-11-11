@@ -1,8 +1,5 @@
 # EMM ファイル形式
 
-Copyright (C) 2026 hato  
-GNU General Public License バージョン3（GPL-3.0-only）
-
 本書は MikuMikuEffect（舞力介入P氏）のファイル形式を相互運用のために記録した非公式の資料で、作者とは関係ありません。
 
 ## 1. 概要

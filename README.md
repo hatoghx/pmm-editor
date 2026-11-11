@@ -19,6 +19,10 @@ MikuMikuDance のプロジェクトファイル（PMM）と、MikuMikuEffect の
 | 9 | [質問と手順の対応](docs/09-question-guide.md) | 依頼の例から手順を選ぶ表 |
 | 10 | [検証記録](docs/10-verification.md) | 根拠、観測した値、未確定の事項、既存実装との違い |
 
+## English
+
+An English version of the documents is available in [docs-en](docs-en/00-index.md).
+
 ## ライセンス
 
 GNU General Public License バージョン3（GPL-3.0-only）
