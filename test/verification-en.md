@@ -121,3 +121,13 @@ Bone and morph names were 19 bytes or shorter in all 1,613 models.
 | Outside-parent model ID | −2 does not appear in the keys of the 134 files (−2 means the ground) |
 | Truncated PMM | A PMM with 3 models was cut and read again: at 95% of the length, 2 models were recovered completely with their key counts; at 99%, all 3 |
 | 0001 | The three samples shipped with MMD 9.32 were read to the last byte with the structure in Appendix A |
+
+## 6. Verification on MMD 9.32
+
+A PMM was made whose model path was rewritten to a relative path without `UserFile` (a file name only). The PMM and the model were placed in the same folder, outside the MMD folder, and the PMM was opened.
+
+| Way of opening | Result |
+| --- | --- |
+| Start MMD with the PMM as an argument (working folder is the executable folder) | The "model file not found" screen appears. The current folder is the executable folder, so the relative path is not found (Behavior 2.3, 3.1) |
+| Open from the menu "Open" in a running MMD | The model is found and loading continues (the current folder becomes the PMM folder; Behavior 3.1). The PMM and PMX lists of this file differed, so the "model structure differs" screen followed (Relations 3.2) |
+| Drop onto the window of a running MMD | There was no way to send the drop from an external program, so it was not tried on the real machine |
