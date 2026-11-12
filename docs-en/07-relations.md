@@ -105,7 +105,7 @@ When MMD opens a model in a PMM, it loads the PMX from the stored path and compa
 | --- | --- | --- |
 | Bone count and names | Read by index | Bones are matched by name. Keys of names missing from the PMX are discarded |
 | Morph count and names | Read by index | Morphs are matched by name. Keys of names missing from the PMX are discarded |
-| Number of display frames | The open state is used | The open state is discarded |
+| Number of display frames | The open state is used | MMD can crash unless the number equals the PMX display frame count or is 1 larger (PMM 5.8) |
 
 When the lists do not match, MMD shows a confirmation saying that the model structure differs from the one at the time the PMM was saved.
 
