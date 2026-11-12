@@ -12,7 +12,7 @@ MMD/PMM と、MME/EMMを扱うための資料です。ファイルの形式に�
 | --- | --- | --- |
 | 1 | [目次](docs/01-index.md) | 文書の一覧、依頼の進め方 |
 | 2 | [基礎知識](docs/02-basics.md) | 用語、ファイルの種類、文字コード |
-| 3 | [PMM ファイル形式](docs/03-pmm-format.md) | PMM のバイト構造 |
+| 3 | [PMM ファイル形式](docs/03-pmm-format.md) | PMM の byte 構造 |
 | 4 | [EMM ファイル形式](docs/04-emm-format.md) | EMM のテキスト構造 |
 | 5 | [VMD ファイル形式](docs/05-vmd-format.md) | モーションファイルの構造 |
 | 6 | [PMX の参照部分](docs/06-pmx-reference.md) | PMM の一覧を PMX から作る方法 |

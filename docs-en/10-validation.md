@@ -24,19 +24,22 @@ Do not modify the original. When repairing, write out under another name (Proced
 
 ## 3. Structure Checks
 
+"MMD can load it" and "MMD crashes" are results tried on MMD 9.32 (Verification record).
+
 | No. | Check | Condition | Level and repair when it fails |
 | --- | --- | --- | --- |
 | 1 | Signature | The first 24 bytes are `Polygon Movie maker 0002` (or `0001`) and the next byte is 0 | Error. Not a PMM, or an unsupported version (PMM chapter 4, Appendix A) |
-| 2 | Position after reading | The PMM is read to the last byte and the position equals the file size. A file that ends at chapter 12 and a file that has chapter 13 are both normal | Error when the position is smaller than the size (truncated; Procedures 6.3). Warning when it is larger (extra bytes follow) |
+| 2 | Position after reading | The PMM is read to the last byte and the position equals the file size. A file that ends at chapter 12 and a file that has chapter 13 are both normal | Error when the position is smaller than the size (truncated; Procedures 6.3). Warning when it is larger (extra bytes follow; MMD can load it) |
 | 3 | Counts | The model, bone, morph, IK, outside-parent slot, accessory and key counts are 0 or more and fit in the remaining bytes | Error. The count bytes are corrupted (Procedures 6.1) |
 | 4 | Key chains | The frame of each initial record is 0. Following next visits frames in ascending order. Added record IDs are ascending and not smaller than the number of initial records. The last next is 0. The previous of the first added record is the ID of the initial record (PMM 2.3) | Warning. Keys are missing or out of order in MMD (Procedures 6.4) |
 | 5 | Model IDs | No duplicates within the PMM | Error. References cannot be resolved (PMM 5.8) |
-| 6 | Referenced model IDs | Every model ID pointed to by the selected model, outside parents, camera parent and accessory parents exists in the PMM (except −1 and −2) | Warning. The target does not exist (PMM 5.6). Loading does not stop |
-| 7 | Index ranges | The selected bone and morphs are −1 or in the range 0 to count − 1. IK bone indices and the indices of bones that can have an outside parent are 0 to bone count − 1 (the first outside-parent index is −1) | Error. An index points outside the range |
-| 8 | Outside-parent pairs | (−1, 0), (−2, 0), or an existing model with an existing bone (PMM 5.4) | Warning. A combination MMD does not accept (Procedures 4.1) |
-| 9 | Display frame count | Item 5 and item 18 have the same value, which is 255 or less (PMM 5.1) | Warning. MMD continues without using the open states of the display frames |
-| 10 | Render order | The render order of models runs 1, 2, 3, and so on. The render order of accessories runs 0, 1, 2, and so on | Warning. The EMM numbers drift (Relations 2.3) |
-| 11 | Model lists | The bone names, morph names, IK list and outside-parent bone list match the model file (PMX chapter 4) | Warning. MMD reports that the model structure differs (Relations 3.2) |
+| 6 | Selected model and camera key parent | The selected model in the header and the parent model ID of the camera keys exist in the PMM (except −1) | Warning. The target does not exist. MMD can load it |
+| 7 | Current outside-parent state and camera follow target | The parents in the current outside-parent state (PMM 5.6) and the camera follow target (PMM chapter 12) point to a model in the PMM and to an existing bone of that model (none is −1) | Error. MMD crashes (Procedures 4.1) |
+| 8 | Index ranges | The selected bone and morphs are −1 or in the range 0 to count − 1. IK bone indices and the indices of bones that can have an outside parent are 0 to bone count − 1 (the first outside-parent index is −1) | Warning. An index points outside the range. MMD can load it |
+| 9 | Outside-parent pairs in keys | (−1, 0), (−2, 0), or an existing model with an existing bone (PMM 5.4) | Warning. A combination MMD does not accept (Procedures 4.1) |
+| 10 | Display frame count | Item 5 equals the number of PMX display frames or is 1 larger. Item 5 and item 18 have the same value, which is 255 or less (PMM 5.8) | Error. MMD crashes when item 5 does not fit |
+| 11 | Render order | The render order of models runs 1, 2, 3, and so on. The render order of accessories runs 0, 1, 2, and so on | Warning. The EMM numbers drift (Relations 2.3) |
+| 12 | Model lists | The bone names, morph names, IK list and outside-parent bone list match the model file (PMX chapter 4) | Warning. MMD reports that the model structure differs (Relations 3.2) |
 
 ## 4. Limit Checks
 

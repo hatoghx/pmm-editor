@@ -208,7 +208,7 @@ Outside-parent values follow these rules.
 | Parent model ID | i32 | −1 if none |
 | Parent bone index | i32 | |
 
-The parent model ID may point to a model that is not in the file. A reader must not stop when the target is missing.
+The parent model ID in a key may point to a model that is not in the file. A reader must not stop when the target is missing. The current outside-parent state must point to an existing model and its bone (otherwise MMD crashes).
 
 ### 5.7 Rendering Info (7 bytes)
 
@@ -231,7 +231,7 @@ The model ID is the number that identifies a model inside the PMM. It is referen
 
 In files saved by MMD, IDs do not always run from 0 in order. A writer may renumber them from 0. In that case every reference above must be rewritten with the same mapping.
 
-For a model that has morphs, the number of display frames is the number of PMX display frames plus 1 (the facial frame is added). For a model without morphs, it equals the number of PMX display frames. Of 1,162 entries examined, 1,149 follow this rule; the other 13 (with morphs) had the same number as the PMX. When this number does not match the loaded model, MMD ignores the open state of the display frames and continues. A mismatch therefore does not make loading fail.
+For a model that has morphs, the number of display frames is the number of PMX display frames plus 1 (the facial frame is added). For a model without morphs, it equals the number of PMX display frames. Of 1,162 entries examined, 1,149 follow this rule; the other 13 (with morphs) had the same number as the PMX. MMD loads correctly only when this number equals the number of PMX display frames or is 1 larger. With any other value it can crash during loading (Verification record).
 
 ## 6. Camera
 

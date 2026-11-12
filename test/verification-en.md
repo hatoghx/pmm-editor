@@ -139,3 +139,21 @@ On Japanese Windows (932), a PMM was placed in a folder whose name contains Simp
 | --- | --- |
 | Start MMD with the PMM path as an argument | The "file cannot be loaded: 22" screen appears and the file cannot be opened (Behavior 3.1) |
 | Open from the menu "Open" in a running MMD | It opens. The model is found and loading continues (Behavior 3.1) |
+
+## 7. Verification of Broken PMMs on the Real Machine
+
+A PMM with one model and 17 display frames (16 in the PMX; the model has morphs) was used as the base, and a PMM with one value rewritten was opened from the menu "Open" of MMD 9.32. The base PMM opened without a confirmation screen.
+
+| Value rewritten | Result |
+| --- | --- |
+| Appended 10 zero bytes to the end of the file | Loads |
+| Set the selected model in the header to a model ID that does not exist (77) | Loads |
+| Set the selected bone index to 99999 | Loads |
+| Set an IK bone index to 99999 | Loads |
+| Set the index of a bone that can have an outside parent to 99999 | Loads |
+| Set the parent model of the first camera key to 77 | Loads |
+| Set the parent model of the current outside-parent state to 77 | MMD crashes |
+| Set the parent bone index of the current outside-parent state to 99999 (the parent model exists) | MMD crashes |
+| Set the camera follow target model to 77 | MMD crashes |
+| Set the display frame count (item 5) to 16 | Loads |
+| Set the display frame count (item 5) to any of 18, 8, 1, 0 and 99 | MMD crashes |
