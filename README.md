@@ -1,6 +1,6 @@
 # pmm-editor
 
-[Document (EN)](docs-en/01-index.md) [Document (zh-CN)](docs-zhcn/01-index.md)
+[English](README-en.md) / [简体中文](README-zhcn.md)
 
 MMD/PMM と、MME/EMMを扱うための資料です。ファイルの形式に加えて、複製、安全性検証、外部親編集、モーション適用と抽出、修復、最適化、パッケージ化などの作業手順をまとめています。
 
