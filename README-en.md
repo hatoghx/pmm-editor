@@ -29,7 +29,7 @@ They are also used in the IO library of [PmmFileManager](https://booth.pm/ja/ite
 ## Credits
 
 These documents are unofficial and record the file formats of MMD and MME. They have no relationship with the authors of either software.
-Thanks to Yu Higuchi (MMD) and Furiki Kaiyu P (MME).
+Thanks to 樋口優 (MMD) and 舞力介入P (MME).
 
 ## License
 
