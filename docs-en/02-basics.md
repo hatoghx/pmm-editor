@@ -1,6 +1,6 @@
 # Basics
 
-## 1. Purpose of This Document
+## 1. Role
 
 This document collects the background needed to work with PMM and EMM files. The other documents use the terms defined here.
 
