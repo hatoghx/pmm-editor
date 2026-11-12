@@ -132,3 +132,10 @@ A PMM was made whose model path was rewritten to a relative path without `UserFi
 | Open from the menu "Open" in a running MMD | The model is found and loading continues (the current folder becomes the PMM folder; Behavior 3.1). The PMM and PMX lists of this file differed, so the "model structure differs" screen followed (Relations 3.2) |
 | Drop onto the window of an MMD just started (a file dragged from another application window) | The "model file not found" screen appears. No other operation was made, so the current folder is still the executable folder (Behavior 3.1) |
 | Drop onto the window after loading a model from the menu | The model is found and loading continues. The current folder remains the folder of the model loaded just before (Behavior 3.1) |
+
+On Japanese Windows (932), a PMM was placed in a folder whose name contains Simplified Chinese characters (characters not in 932), and the ways of opening were compared. The model path is an absolute path.
+
+| Way of opening | Result |
+| --- | --- |
+| Start MMD with the PMM path as an argument | The "file cannot be loaded: 22" screen appears and the file cannot be opened (Behavior 3.1) |
+| Open from the menu "Open" in a running MMD | It opens. The model is found and loading continues (Behavior 3.1) |
