@@ -266,7 +266,7 @@ Steps:
 2. Follow the dependencies of each file (7.2).
 3. Copy the dependencies, keeping their position relative to the original file.
 4. Rewrite the PMM paths to the absolute paths of the copies. Abort if a path exceeds 255 bytes.
-5. Rewrite the EMM paths (`[Object]` and effect lines) to the copies.
+5. Rewrite the EMM paths (`[Object]` and effect lines) and the paths of the `Obj` lines of the EMDs to the copies.
 6. Write the PMM and EMM in the same encoding as the originals.
 
 ### 7.2 Following Dependencies

@@ -91,7 +91,7 @@ MME 按下列方式书写路径。效果文件的路径（第 7 章）也遵循�
 | 路径中包含名为 `UserFile` 的文件夹 | 从 `UserFile` 开始的相对路径 | `UserFile\Model\miku.pmx` |
 | 其他 | 绝对路径 | `D:\stage\stage.pmx` |
 
-以 `UserFile` 开头的相对路径，以 MMD 可执行文件所在的文件夹为基准。其他相对路径，从 EMM 文件所在的文件夹开始解析。
+相对路径的基准，无论是否以 `UserFile` 开头，都是 MMD 可执行文件所在的文件夹。不会在 EMM 文件所在的文件夹中查找（验证记录）。
 
 ### 5.3 物体名
 
@@ -187,3 +187,7 @@ EMD 保存单个模型或配件的分配。将同名的 EMD 放在该文件所�
 | 区段 | `[Info]`、`[Object]`、`[Effect]`、`[Effect@名称]` | 仅 `[Info]` 与 `[Effect]` |
 | `Default` 行 | `[Effect]` 中必需 | 不可有 |
 | 物体名 | `Pmd<编号>`、`Acs<编号>` | 仅 `Obj` |
+
+EMD 的 `Obj` 行中的相对路径，基准同样是 MMD 可执行文件所在的文件夹。
+
+`[Effect]` 中 `Obj` 与 `Obj[n]` 的值是效果的路径（第 7 章的形式）。

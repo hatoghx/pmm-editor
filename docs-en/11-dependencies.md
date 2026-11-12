@@ -25,51 +25,7 @@ A PMM holds no VMD paths. The motion is inside the PMM, so it is not an object t
 
 ### 3.1 pmx
 
-PMX has versions 2.0 and 2.1; the part used here has the same layout. Read from the start in this order.
-
-| Order | Item | Content |
-| --- | --- | --- |
-| 1 | Signature | `PMX ` (4 bytes), version (f32) |
-| 2 | Globals | A count (u8, normally 8) followed by that many u8 values. In order: encoding (0 is UTF-16 little endian, 1 is UTF-8), number of additional UVs, vertex index size, texture index size, material index size, bone index size, morph index size, rigid body index size |
-| 3 | Model info | Four strings (model name, English name, comment, English comment) |
-| 4 | Vertices | Count (i32) and a record per vertex. The record size is given below |
-| 5 | Faces | Index count (i32) and vertex index size × count |
-| 6 | Texture table | Count (i32) and strings × count. Paths are based on the folder of the pmx |
-| 7 | Materials | Count (i32) and a record per material (table below) |
-
-A string is a length (i32) followed by that many bytes.
-
-The size of a vertex record is the sum of:
-
-- Position, normal, UV: 12 + 12 + 8 bytes
-- Additional UVs: 16 bytes × number of additional UVs
-- Weight type (u8) and its content (let n be the bone index size)
-  - 0: n
-  - 1: 2n + 4
-  - 2: 4n + 16
-  - 3: 2n + 4 + 36
-  - 4: 4n + 16
-- Edge scale: 4 bytes
-
-The parts of a material record needed to read references are:
-
-| Order | Item | Type |
-| --- | --- | --- |
-| 1 | Material name, English name | String × 2 |
-| 2 | Diffuse, specular, specular strength, ambient | 16 + 12 + 4 + 12 bytes |
-| 3 | Drawing flags | u8 |
-| 4 | Edge color, edge size | 16 + 4 bytes |
-| 5 | Texture index | Texture index size (signed; −1 means none) |
-| 6 | Sphere index | Same |
-| 7 | Sphere mode | u8 |
-| 8 | Shared toon flag | u8 |
-| 9 | Toon index | Texture index size when the flag is 0; u8 when the flag is 1 |
-| 10 | Memo | String |
-| 11 | Face count | i32 |
-
-When the shared toon flag is 1, toon indices 0 to 9 point to `toon01.bmp` to `toon10.bmp`, which MMD provides in the `Data` folder of the MMD executable folder. Do not collect them.
-
-In the 1,088 pmx files at hand, every file could be read to the last material in this order, and every texture index fell inside the texture table. Of the 8,217 entries in the texture tables, 8,110 existed relative to the pmx folder.
+How to read the texture table and materials of a pmx is in chapter 5 of [PMX Reference](06-pmx-reference.md). Shared toons and `screen.bmp` are not collected.
 
 ### 3.2 pmd
 
@@ -97,9 +53,7 @@ Of the 70 bytes of a material, two parts are needed to read references.
 | 44 | Toon number (u8) | 0 to 9 is a number in the toon name table. 255 means none |
 | 50 | Texture name (20 bytes) | The value ends at the first NUL. When separated by `*`, the first part is the texture and the second is the sphere map (`.sph` or `.spa`) |
 
-In the toon name table, `toon01.bmp` to `toon10.bmp` are the defaults, and MMD provides them. A name other than the defaults (for example `toon_hada.bmp`) is collected as a file in the model folder. In all 22 pmd files at hand, the toon name table could be read in this order, and 14 entries had names other than the defaults.
-
-Texture paths are based on the folder of the pmd.
+In the toon name table, `toon01.bmp` to `toon10.bmp` are the defaults, and MMD provides them. A name other than the defaults (for example `toon_hada.bmp`) is collected as a file in the model folder.
 
 ### 3.3 x
 
@@ -122,7 +76,7 @@ The x on line 2 is an object to collect. Its path is based on the folder of the 
 
 ### 3.5 EMD
 
-If an EMD with the same name as the model file, differing only in extension, is in the same folder, MME applies it automatically on load (EMM Appendix A). An EMD consists of `[Info]` and `[Effect]`, and the values of `Obj` and `Obj[n]` in `[Effect]` are effect paths (the form of EMM chapter 7). Collect these effects.
+If an EMD with the same name as the model file, differing only in extension, is in the same folder, MME applies it automatically on load (EMM Appendix A). An EMD consists of `[Info]` and `[Effect]`, and the values of `Obj` and `Obj[n]` in `[Effect]` are effect paths (the form of EMM chapter 7). Collect these effects. Relative paths are based on the folder that contains the MMD executable (EMM 5.2).
 
 ### 3.6 fx and fxsub
 
@@ -148,6 +102,7 @@ When the target is an fx or fxsub, follow it further.
 
 - Paths of references are written relative to the referrer. Keep the relative position between a referrer and its dependencies after copying. Otherwise textures of a pmx and `#include` of an fx are no longer found.
 - Therefore the files of one model (pmx, pmd, textures, sphere maps, toons, EMD) are copied under a single folder with their original hierarchy, without splitting them by kind.
+- Effects with relative paths in an EMM or EMD are searched from the folder that contains the MMD executable. After copying, rewrite them to the absolute paths of the copied effects.
 - When the relative position cannot be kept, stop and tell the user. Example: a dependency is on another drive.
 - When several models use the same texture, copy it once per model folder so that each model folder is self-contained. Copy an effect only once, because it is referenced from the EMM.
 - When folder or file names collide, tell them apart with a number (example: `Model_2`).

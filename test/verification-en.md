@@ -170,3 +170,13 @@ The way of reading described in Dependencies and Layout (chapter 11) was checked
 | vac | The 6-line structure was confirmed, and line 2 was the name of an x in the same folder |
 | EMD | An EMD with the same name and a different extension was in the same folder as a PMX, and it consisted of `[Info]` and `Obj` and `Obj[n]` lines in `[Effect]` |
 | Shared toons | `toon01.bmp` to `toon10.bmp` were present in the `Data` folder of the MMD executable folder |
+
+## 9. Base Folder of Relative Effect Paths
+
+An invalid fx file (`bad.fx`) with the same name and a distinguishing marker was placed in the MMD executable folder, in the folder of the EMM (or EMD), and in `UserFile` of the executable folder. It was loaded by specifying it with a relative path. MMD was the debug build of 9.32, and the model was loaded from a PMM (menu "Open").
+
+| Specification | Result |
+| --- | --- |
+| `Obj = relsubad.fx` in an EMD | `relsubad.fx` in the executable folder was read (`relsubad.fx` in the folder of the EMD was not) |
+| `Pmd1 = relsubad.fx` in an EMM | `relsubad.fx` in the executable folder was read |
+| `Default = onlyemmad.fx` in an EMM (the file exists only in the folder of the EMM) | "The effect file does not exist" was reported, and `onlyemmad.fx` in the executable folder was searched |

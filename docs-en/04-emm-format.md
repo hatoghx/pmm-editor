@@ -91,7 +91,7 @@ MME writes paths as follows. Effect file paths (chapter 7) follow the same rule.
 | The path contains a folder named `UserFile` | Relative path starting at `UserFile` | `UserFile\Model\miku.pmx` |
 | Otherwise | Absolute path | `D:\stage\stage.pmx` |
 
-Relative paths starting with `UserFile` are based on the folder that contains the MMD executable. Other relative paths are resolved from the folder that contains the EMM file.
+Relative paths are based on the folder that contains the MMD executable, whether or not they start with `UserFile`. The folder that contains the EMM file is not searched (Verification record).
 
 ### 5.3 Object Names
 
@@ -187,3 +187,7 @@ EMD stores the assignments of a single model or accessory. When an EMD with the 
 | Sections | `[Info]`, `[Object]`, `[Effect]`, `[Effect@name]` | `[Info]` and `[Effect]` only |
 | `Default` line | Required in `[Effect]` | Not allowed |
 | Object names | `Pmd<number>`, `Acs<number>` | `Obj` only |
+
+Relative paths in the `Obj` lines of an EMD are also based on the folder that contains the MMD executable.
+
+The values of `Obj` and `Obj[n]` in `[Effect]` are effect paths (the form of chapter 7).
