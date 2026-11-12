@@ -1,8 +1,6 @@
 # pmm-editor
 
-[日本語](README.md) [简体中文](README-zhcn.md)
-
-[Documents (EN)](docs-en/01-index.md)
+[日本語](README.md) / [简体中文](README-zhcn.md)
 
 These documents cover MMD/PMM and MME/EMM. In addition to the file formats, they describe procedures such as duplication, safety validation, outside-parent editing, applying and extracting motion, repair, optimization and packaging.
 
