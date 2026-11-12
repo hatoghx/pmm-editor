@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-PMM is the project file of MikuMikuDance. A single binary file holds the models, camera, light, accessories, keyframes and editor state. This document covers format version 0002.
+PMM is the project file of MMD. A single binary file holds the models, camera, light, accessories, keyframes and editor state. This document covers format version 0002.
 
 Terms are defined in [Basics](02-basics.md). The relationship to PMX is described in [PMX Reference](06-pmx-reference.md) and [File Relationships](07-relations.md). How MMD opens a PMM is described in [MMD Behavior](08-mmd-behavior.md).
 
@@ -23,10 +23,10 @@ Terms are defined in [Basics](02-basics.md). The relationship to PMX is describe
 
 ### 2.2 Strings
 
-- Text is encoded in the ANSI code page of the system that saved the file. On Japanese Windows this is CP932 (Shift_JIS).
+- Text is encoded in the ANSI code page of the system that saved the file (932 on Japanese Windows, 936 on Simplified Chinese Windows, and so on; see the table in Basics chapter 7).
 - After the NUL of a fix(N) field, leftovers of previously used strings may remain. When reading, cut at the first NUL. When writing, fill everything after the NUL with zeros.
 - Paths are absolute or relative. How relative paths are resolved is described in chapter 2 of [MMD Behavior](08-mmd-behavior.md).
-- Bone and morph names are the PMX names converted to the ANSI code page and truncated to 19 bytes. The cut may fall in the middle of a double-byte character. Characters that the code page cannot represent are lost.
+- Bone and morph names are the PMX names converted to the ANSI code page and truncated to 19 bytes. In the code pages that use 2 bytes (932, 936, 949, 950), the cut may fall in the middle of a double-byte character. Characters that the code page cannot represent are lost.
 
 ### 2.3 Keyframe Lists
 
@@ -474,7 +474,7 @@ The value in the file uses a different scale from the value shown in the editor.
 
 ## 13. Extension
 
-This part was added in MikuMikuDance 9.24. Older files end after chapter 12.
+This part was added in MMD 9.24. Older files end after chapter 12.
 
 | Field | Type | Meaning |
 | --- | --- | --- |
@@ -496,7 +496,7 @@ Range selection target values:
 
 ## Appendix A. Differences in Version 0001
 
-Version 0001 is written by old versions of MikuMikuDance. Only the trailing digits of the signature are `0001`. The three sample PMMs shipped with MMD 9.32 are read to the last byte with the structure below.
+Version 0001 is written by old versions of MMD. Only the trailing digits of the signature are `0001`. The three sample PMMs shipped with MMD 9.32 are read to the last byte with the structure below.
 
 ### A.1 Header
 

@@ -55,7 +55,7 @@ MMD tries the paths stored in the PMM (models, accessories, audio, background) i
 
 ### 3.2 Why They Differ
 
-- When a file is dropped on the exe, Windows passes the path to MMD as an ANSI string. On Japanese Windows, characters outside CP932, such as Simplified Chinese characters, become `?` and the file cannot be opened.
+- When a file is dropped on the exe, Windows passes the path to MMD as an ANSI string. Characters outside the ANSI code page (for example Simplified Chinese characters on Japanese Windows, whose code page is 932) become `?` and the file cannot be opened.
 - The menu and dropping on the window receive the path as Unicode.
 - How relative paths without `UserFile` are found depends on the current folder (2.3). Because each method leaves a different current folder, the same PMM may or may not find its models depending on how it is opened.
 

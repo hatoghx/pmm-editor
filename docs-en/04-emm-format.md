@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-EMM is a text file in which MikuMikuEffect (MME below) stores effect assignments. It records which effect file is assigned to which model or accessory.
+EMM is a text file in which MME stores effect assignments. It records which effect file is assigned to which model or accessory.
 
 Terms are defined in [Basics](02-basics.md). The correspondence with PMM and the numbering rule are in [File Relationships](07-relations.md); the evidence is in [Verification](../test/verification-en.md).
 
@@ -12,7 +12,7 @@ Terms are defined in [Basics](02-basics.md). The correspondence with PMM and the
 
 | Item | Rule |
 | --- | --- |
-| Encoding | ANSI code page of the system that saved the file. CP932 on Japanese Windows |
+| Encoding | ANSI code page of the system that saved the file (the table in Basics chapter 7) |
 | BOM | None. MME aborts loading when a UTF-8 BOM is present |
 | Line break | CR LF |
 | Line length | Up to 1,023 bytes |

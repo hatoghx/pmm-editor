@@ -28,7 +28,7 @@ Types are written as in 2.1 of [PMM File Format](03-pmm-format.md). u32 is an un
 
 - Older VMD files end after an earlier section. When the reader reaches the end of the file, treat the remaining sections as having 0 entries.
 - Keys may appear in any order.
-- Strings use the ANSI code page. Distributed VMD files are expected to be CP932.
+- Strings use the ANSI code page of the environment where the VMD is used. A VMD for a Japanese MMD is 932.
 - Unlike PMM, there is no key chain (previous, next). Keys of the same bone are distinguished only by name and frame number.
 
 ## 3. Bone Key (111 bytes)

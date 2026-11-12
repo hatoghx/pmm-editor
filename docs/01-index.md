@@ -1,6 +1,6 @@
 # 目次
 
-MikuMikuDance のプロジェクトファイル（PMM）と、MikuMikuEffect の割り当てファイル（EMM）についての資料です。ファイルの形式、ファイル同士の関係、MikuMikuDance の動作、作業の手順をまとめています。
+MMD のプロジェクトファイル（PMM）と、MME の割り当てファイル（EMM）についての資料です。ファイルの形式、ファイル同士の関係、MikuMikuDance の動作、作業の手順をまとめています。
 
 ## 1. 文書の一覧
 
@@ -21,7 +21,7 @@ MikuMikuDance のプロジェクトファイル（PMM）と、MikuMikuEffect の
 1. [質問と手順の対応](10-question-guide.md) で、依頼に合う手順を探す。
 2. 手順が指す [作業の手順](09-operations.md) の節を読む。
 3. 手順の中で参照される形式の節（03 から 06）を読む。
-4. 依頼が MikuMikuDance での見え方や開き方に関わるときは、[MMD の動作](08-mmd-behavior.md) を読む。
+4. 依頼が MMD での見え方や開き方に関わるときは、[MMD の動作](08-mmd-behavior.md) を読む。
 
 ## 3. 節番号の書き方
 

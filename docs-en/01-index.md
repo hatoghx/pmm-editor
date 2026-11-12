@@ -1,6 +1,6 @@
 # Index
 
-This material covers the MikuMikuDance project file (PMM) and the MikuMikuEffect assignment file (EMM). It describes the file formats, the relationships between files, how MikuMikuDance behaves, and step-by-step procedures.
+This material covers the MMD project file (PMM) and the MME assignment file (EMM). It describes the file formats, the relationships between files, how MMD behaves, and step-by-step procedures.
 
 ## 1. Documents
 
@@ -21,7 +21,7 @@ This material covers the MikuMikuDance project file (PMM) and the MikuMikuEffect
 1. Find the matching procedure in the [Question Guide](10-question-guide.md).
 2. Read the section of [Procedures](09-operations.md) that it points to.
 3. Read the format sections (03 to 06) referenced in the procedure.
-4. When the request concerns how something looks or opens in MikuMikuDance, read [MMD Behavior](08-mmd-behavior.md).
+4. When the request concerns how something looks or opens in MMD, read [MMD Behavior](08-mmd-behavior.md).
 
 ## 3. Section References
 

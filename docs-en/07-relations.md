@@ -134,4 +134,4 @@ VMD bone and morph names are limited to 15 bytes; PMM allows 19 bytes. Names of 
 
 ### 4.3 Encoding
 
-VMD names are written in the ANSI code page of the environment where the model is used. To create a VMD for a Japanese environment from a PMM made in a Chinese environment (GBK), read the names as GBK and write them as CP932. Names containing characters that CP932 cannot represent cannot be converted.
+VMD names are written in the ANSI code page of the environment where the model is used. To create a VMD from a PMM made in another environment, read the names in the original code page and write them in the code page of the environment of use. For example, to create a VMD for a Japanese environment from a PMM in 936, read the names as 936 and write them as 932. Names containing characters that the target code page cannot represent cannot be converted.

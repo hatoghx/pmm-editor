@@ -4,7 +4,7 @@
 
 This document collects the background needed to work with PMM and EMM files. The other documents use the terms defined here.
 
-## 2. Software
+## 2. Software and Tools
 
 | Name | Description |
 | --- | --- |
@@ -26,7 +26,7 @@ This document collects the background needed to work with PMM and EMM files. The
 
 A PMM does not contain the model or accessory files. It stores only their paths. Moving a PMM to another place can therefore break the references.
 
-## 4. Scene Elements
+## 4. Scene
 
 | Term | Meaning |
 | --- | --- |
@@ -41,7 +41,7 @@ A PMM does not contain the model or accessory files. It stores only their paths.
 | Grant (付与) | A PMX feature that passes the rotation or translation of one bone to another bone |
 | Physics | Simulation that sways hair and skirts under gravity. It can be turned off per bone and per key |
 
-## 5. Time and Motion
+## 5. Frames
 
 | Term | Meaning |
 | --- | --- |
@@ -50,7 +50,7 @@ A PMM does not contain the model or accessory files. It stores only their paths.
 | Interpolation curve | How a value changes between keys. A Bézier curve described by two control points (four numbers) |
 | Initial key | The key at frame 0 that PMM always stores for every element |
 
-## 6. Rendering and Calculation Order
+## 6. Order
 
 | Term | Meaning |
 | --- | --- |
@@ -65,9 +65,28 @@ A PMM does not contain the model or accessory files. It stores only their paths.
 | UserFile | The standard folder for assets, located next to the MMD executable |
 | Absolute path | A path written from the drive, such as `C:\` |
 | Relative path | A path based on some folder. MMD and MME have their own rules for the base folder ([MMD Behavior](08-mmd-behavior.md)) |
-| ANSI code page | The text encoding determined by the Windows language setting. CP932 (Shift_JIS) on Japanese Windows and CP936 (GBK) on Simplified Chinese Windows |
+| ANSI code page | The text encoding determined by the Windows language setting. It is identified by a number (table below) |
 
-MMD and MME write strings in files using the ANSI code page. Files created on Japanese Windows use CP932, and files created on Chinese Windows use GBK. The files do not record their encoding, so the reader must determine it.
+MMD and MME write strings in files in the ANSI code page of the system that saved the file. The files do not record their encoding, so the reader must determine it. Every code page that Windows uses as an ANSI code page applies. The main ones are as follows.
+
+| Number | Language or region | Bytes per character |
+| --- | --- | --- |
+| 874 | Thai | 1 |
+| 932 | Japanese (Shift_JIS) | 1 or 2 |
+| 936 | Simplified Chinese (GBK) | 1 or 2 |
+| 949 | Korean | 1 or 2 |
+| 950 | Traditional Chinese (Big5) | 1 or 2 |
+| 1250 | Central European | 1 |
+| 1251 | Cyrillic | 1 |
+| 1252 | Western European (English and others) | 1 |
+| 1253 | Greek | 1 |
+| 1254 | Turkish | 1 |
+| 1255 | Hebrew | 1 |
+| 1256 | Arabic | 1 |
+| 1257 | Baltic | 1 |
+| 1258 | Vietnamese | 1 |
+
+In a 1-byte code page every byte is some character, so a wrong guess produces no broken characters. In the code pages that use 2 bytes (932, 936, 949, 950), truncating a name to 19 bytes can cut a 2-byte character in the middle.
 
 ## 8. Document List
 

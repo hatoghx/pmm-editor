@@ -35,9 +35,11 @@ References such as "PMM 5.2" point to [PMM File Format](03-pmm-format.md), "EMM 
 Neither PMM nor EMM records its encoding. Decide in this order.
 
 1. If the user specifies an encoding, use it.
-2. Decode model names, bone names and paths as CP932. If no character is broken, use CP932.
-3. If characters are broken, decode again as GBK (CP936). If no character is broken, use GBK.
-4. If neither works, ask the user.
+2. When the PMX of the model is at hand, encode its bone names in each candidate code page (the table in Basics chapter 7), truncate them to 19 bytes, and use the code page that matches the bone names of the PMM.
+3. When there is no PMX, read the model and accessory paths of the PMM in each candidate code page and use the code page in which the file at that path exists.
+4. When the names and paths contain only ASCII characters so the candidates cannot be narrowed, or when none fits, ask the user.
+
+The presence of broken characters alone does not decide it. In a 1-byte code page (874, 1250 to 1258) every byte is a character.
 
 When writing, use the same encoding as when reading. Rules for converting to another encoding are in 9.3.
 
@@ -173,11 +175,11 @@ A model that follows another model through an outside parent should come after t
 
 ### 5.1 Extracting Model Motion to VMD
 
-1. Determine the encoding (2.2). A PMM created on Chinese Windows is GBK.
+1. Determine the encoding (2.2). A PMM is written in the code page of the environment where it was created.
 2. Find the model and the index of the bone (or morph) to extract.
 3. Follow next from the initial record and collect all keys of that bone (PMM 2.3). Include the initial key at frame 0.
 4. Convert the keys to VMD bone keys (Relations 4.1). Reorder the interpolation curves as in VMD 3.1.
-5. Write the names in the encoding of the user's environment (Relations 4.3). Use CP932 for a Japanese MMD. If a name cannot be represented in CP932, tell the user.
+5. Write the names in the encoding of the user's environment (Relations 4.3). Use 932 for a Japanese MMD. If a name cannot be represented in that code page, tell the user.
 6. Check that the bone name does not exceed 15 bytes. If it does, tell the user that the VMD may not attach to the original bone when loaded.
 7. Write the model name into the model name field of the VMD header.
 
