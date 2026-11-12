@@ -43,6 +43,8 @@ MMD tries the paths stored in the PMM (models, accessories, audio, background) i
 
 The shared toons of a PMX (chapter 5 of [PMX Reference](06-pmx-reference.md)) and toon numbers 0 to 9 of a PMD use `toon01.bmp` to `toon10.bmp` in the `Data` folder of the MMD executable folder. This is outside the steps of 2.2, and the model loads even when the model folder does not contain these files. Replacing a file in `Data` changes the shading of the materials that use that toon.
 
+`toon01.bmp` to `toon06.bmp` are images that produce shading, and `toon07.bmp` to `toon10.bmp` are entirely white images (no shading). All ten are loaded.
+
 ## 3. Differences Between the Three Ways of Opening a PMM
 
 ### 3.1 Comparison

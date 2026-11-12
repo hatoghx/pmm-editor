@@ -216,3 +216,7 @@ The CHRONIC PMM in `UserFile\MMD2` (18 models, 10 accessories, 1 audio file) was
 | A pmd with 4 materials using toon number 1 (`toon02.bmp` in the name table; the model folder has no toon file) | The shading of those materials turned red |
 
 Merely removing `toon02.bmp` from `Data` produced a screen difference about as large as the difference between two screens taken under the same conditions (562 pixels), so it could not be distinguished.
+
+A pmx (shared toon) whose materials all had the toon number rewritten to each of 0 to 9 was made, and only the `toonNN.bmp` for that number was replaced with a solid red image before loading. In all ten cases the model turned red (18,5xx to 18,6xx pixels with reddish color, against 4,430 in the control without replacement).
+
+Of `toon01.bmp` to `toon10.bmp` (32 × 32 pixels) in `Data` of the executable folder, `toon01.bmp` to `toon06.bmp` were images that produce shading, and `toon07.bmp` to `toon10.bmp` were entirely white.
