@@ -205,3 +205,14 @@ Most of the png files not found came from Ray-MMD material fx files in which `#d
 ### 10.2 Opening in the Regular MMD
 
 The CHRONIC PMM in `UserFile\MMD2` (18 models, 10 accessories, 1 audio file) was opened from the menu "Open" of the regular MMD 9.32 in the MMD executable folder. No screen reporting a missing model, accessory or audio file appeared, and loading finished. This matches the result that the procedure of chapter 11 found every model, accessory and audio file of the PMM.
+
+## 11. Location of Shared Toons
+
+`Data	oon02.bmp` in the executable folder of the debug build of MMD 9.32 was temporarily replaced with a solid red image, and models were loaded. After the check, the original file was restored.
+
+| Model | Result |
+| --- | --- |
+| A pmx with 11 materials using shared toon index 1 (the model folder has no toon file) | The shading of those materials turned red |
+| A pmd with 4 materials using toon number 1 (`toon02.bmp` in the name table; the model folder has no toon file) | The shading of those materials turned red |
+
+Merely removing `toon02.bmp` from `Data` produced a screen difference about as large as the difference between two screens taken under the same conditions (562 pixels), so it could not be distinguished.

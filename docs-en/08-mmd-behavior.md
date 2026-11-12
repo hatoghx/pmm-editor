@@ -39,6 +39,10 @@ MMD tries the paths stored in the PMM (models, accessories, audio, background) i
 - The pmx extension is not covered by step 3 of 2.2.
 - A PMM shared with others is less dependent on their environment when its paths are absolute or contain `UserFile`.
 
+### 2.4 Shared Toons
+
+The shared toons of a PMX (chapter 5 of [PMX Reference](06-pmx-reference.md)) and toon numbers 0 to 9 of a PMD use `toon01.bmp` to `toon10.bmp` in the `Data` folder of the MMD executable folder. This is outside the steps of 2.2, and the model loads even when the model folder does not contain these files. Replacing a file in `Data` changes the shading of the materials that use that toon.
+
 ## 3. Differences Between the Three Ways of Opening a PMM
 
 ### 3.1 Comparison
