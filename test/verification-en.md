@@ -130,4 +130,5 @@ A PMM was made whose model path was rewritten to a relative path without `UserFi
 | --- | --- |
 | Start MMD with the PMM as an argument (working folder is the executable folder) | The "model file not found" screen appears. The current folder is the executable folder, so the relative path is not found (Behavior 2.3, 3.1) |
 | Open from the menu "Open" in a running MMD | The model is found and loading continues (the current folder becomes the PMM folder; Behavior 3.1). The PMM and PMX lists of this file differed, so the "model structure differs" screen followed (Relations 3.2) |
-| Drop onto the window of a running MMD | There was no way to send the drop from an external program, so it was not tried on the real machine |
+| Drop onto the window of an MMD just started (a file dragged from another application window) | The "model file not found" screen appears. No other operation was made, so the current folder is still the executable folder (Behavior 3.1) |
+| Drop onto the window after loading a model from the menu | The model is found and loading continues. The current folder remains the folder of the model loaded just before (Behavior 3.1) |
