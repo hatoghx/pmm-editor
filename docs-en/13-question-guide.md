@@ -12,6 +12,7 @@ This table maps questions and requests to the sections to use. Short section nam
 4. When a model or bone name does not exactly match the words of the request, show the candidates and confirm. Model names often end with a version or costume name.
 5. After writing, read the file again and confirm that it reads to the last byte (Procedures 2.1).
 6. Report what was changed with model names, bone names and counts.
+7. Before an operation that cannot be undone, such as deleting or overwriting, confirm with the user (Migration chapter 7).
 
 ## 3. Questions and Sections
 

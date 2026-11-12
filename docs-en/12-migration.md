@@ -37,7 +37,7 @@ Do not decide by guessing what cannot be confirmed; ask the user.
 
 ## 5. Rewriting Paths
 
-Rewrite the absolute paths in the PMM and EMM of a project that was moved as a whole folder, so that they point to the new location. This is not a search for broken paths.
+Rewrite the absolute paths in the PMM and EMM of a project that was moved as a whole folder, so that they point to the new location. PMM paths are written inside fix(256) (PMM 2.1 and 2.2), and EMM paths are written in the form of EMM 5.2. This is not a search for broken paths.
 
 1. Determine the common folder before the move (source root): the deepest folder shared by the PMM location and every absolute path in the PMM and EMM.
 2. Determine the folder after the move (destination root).

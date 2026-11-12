@@ -4,6 +4,18 @@ This material covers the MMD project file (PMM) and the MME assignment file (EMM
 
 ## 1. Documents
 
+### 1.1 Procedure Documents
+
+| No. | Document | Contents | When to read |
+| --- | --- | --- | --- |
+| 13 | [Question Guide](13-question-guide.md) | Table from example requests to procedures | When receiving a request |
+| 09 | [In-File Operations](09-operations.md) | Duplicate, delete, outside parent, motion, repair, create | When modifying the contents of PMM and EMM |
+| 10 | [Safety Validation](10-validation.md) | Checks of structure, limits, paths and values | When checking whether a PMM is intact and safe to open |
+| 11 | [Packaging](11-dependencies.md) | Dependencies (including second-level references), how to follow references, layout of collected files | When collecting, packaging or organizing assets |
+| 12 | [Migration](12-migration.md) | Moving a project elsewhere, rewriting paths | When moving a project to another folder or computer |
+
+### 1.2 Specification Documents
+
 | No. | Document | Contents | When to read |
 | --- | --- | --- | --- |
 | 02 | [Basics](02-basics.md) | Terms, file types, encodings | First |
@@ -13,21 +25,20 @@ This material covers the MMD project file (PMM) and the MME assignment file (EMM
 | 06 | [PMX Reference](06-pmx-reference.md) | How PMM lists are built from PMX | When adding a model to a PMM |
 | 07 | [File Relationships](07-relations.md) | Correspondence between PMM and EMM, PMX, VMD | When a task spans several files |
 | 08 | [MMD Behavior](08-mmd-behavior.md) | Path resolution, differences between ways of opening a PMM | When answering how MMD opens a file |
-| 09 | [In-File Operations](09-operations.md) | Duplicate, delete, outside parent, motion, repair, collect, relink, create | When modifying files |
-| 10 | [Safety Validation](10-validation.md) | Checks of structure, limits, paths and values | When checking whether a PMM is intact and safe to open |
-| 11 | [Packaging](11-dependencies.md) | Dependencies (including second-level references), how to follow references, layout of collected files | When collecting, packaging or organizing assets |
-| 12 | [Migration](12-migration.md) | Moving a project elsewhere, rewriting paths | When moving a project to another folder or computer |
-| 13 | [Question Guide](13-question-guide.md) | Table from example requests to procedures | When receiving a request |
 
 ## 2. Handling a Request
 
-1. Find the matching procedure in the [Question Guide](13-question-guide.md).
-2. Read the section of [In-File Operations](09-operations.md) that it points to.
-3. Read the format sections (03 to 06) referenced in the procedure.
+The documents have two layers: procedure documents (09 to 13) and specification documents (02 to 08). A procedure document defines the order in which a request is carried out and what to observe. A specification document is consulted only for the sections that a procedure needs. The entry point is 13.
+
+1. Find the matching procedure in the [Question Guide](13-question-guide.md). When a request spans several procedures, list them all.
+2. Read the relevant sections of the procedure documents as the main line.
+   - Requests that change the contents of files: [In-File Operations](09-operations.md)
+   - Requests to check how broken a file is or whether it is safe: [Safety Validation](10-validation.md)
+   - Requests to collect files and package a project: [Packaging](11-dependencies.md)
+   - Requests to move a project or migrate it to another computer: [Migration](12-migration.md)
+3. Read the sections of the specification documents (02 to 08) that the procedure refers to, when they are needed. For example, when rewriting paths, read PMM 2.2 and EMM 5.2.
 4. When the request concerns how something looks or opens in MMD, read [MMD Behavior](08-mmd-behavior.md).
-5. When the request is to check how broken a PMM is or whether it is safe, read [Safety Validation](10-validation.md).
-6. When the request is to collect files, package a project or organize assets, read [Packaging](11-dependencies.md).
-7. When the request is to move a project or migrate it to another computer, read [Migration](12-migration.md).
+5. Apply the rules in chapter 2 of 13 to every procedure.
 
 ## 3. Section References
 
