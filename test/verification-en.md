@@ -157,3 +157,16 @@ A PMM with one model and 17 display frames (16 in the PMX; the model has morphs)
 | Set the camera follow target model to 77 | MMD crashes |
 | Set the display frame count (item 5) to 16 | Loads |
 | Set the display frame count (item 5) to any of 18, 8, 1, 0 and 99 | MMD crashes |
+
+## 8. Reading Dependencies
+
+The way of reading described in Dependencies and Layout (chapter 11) was checked against the files at hand.
+
+| Target | Result |
+| --- | --- |
+| pmx | 1,088 files (version 2.0 in 1,087 and 2.1 in 1; every encoding is UTF-16). Every file could be read to the last material, and every texture index fell inside the texture table. Of the 8,217 entries of the texture tables, 8,110 existed relative to the pmx folder. 2,295 materials use a shared toon and 1,161 materials have no texture |
+| pmd | The toon name table could be read in all 22 files. 14 entries had names other than the defaults (`toon01.bmp` to `toon10.bmp`). 52 texture names were separated by `*` |
+| x | In the text format, references in the form `TextureFilename { "Flight.tga"; }` were confirmed |
+| vac | The 6-line structure was confirmed, and line 2 was the name of an x in the same folder |
+| EMD | An EMD with the same name and a different extension was in the same folder as a PMX, and it consisted of `[Info]` and `Obj` and `Obj[n]` lines in `[Effect]` |
+| Shared toons | `toon01.bmp` to `toon10.bmp` were present in the `Data` folder of the MMD executable folder |

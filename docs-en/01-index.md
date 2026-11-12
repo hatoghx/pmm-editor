@@ -15,15 +15,17 @@ This material covers the MMD project file (PMM) and the MME assignment file (EMM
 | 08 | [MMD Behavior](08-mmd-behavior.md) | Path resolution, differences between ways of opening a PMM | When answering how MMD opens a file |
 | 09 | [Procedures](09-operations.md) | Duplicate, delete, outside parent, motion, repair, collect, relink, create | When modifying files |
 | 10 | [Safety Validation](10-validation.md) | Checks of structure, limits, paths and values | When checking whether a PMM is intact and safe to open |
-| 11 | [Question Guide](11-question-guide.md) | Table from example requests to procedures | When receiving a request |
+| 11 | [Dependencies and Layout](11-dependencies.md) | How to follow references, layout of collected files | When collecting, packaging or organizing assets |
+| 12 | [Question Guide](12-question-guide.md) | Table from example requests to procedures | When receiving a request |
 
 ## 2. Handling a Request
 
-1. Find the matching procedure in the [Question Guide](11-question-guide.md).
+1. Find the matching procedure in the [Question Guide](12-question-guide.md).
 2. Read the section of [Procedures](09-operations.md) that it points to.
 3. Read the format sections (03 to 06) referenced in the procedure.
 4. When the request concerns how something looks or opens in MMD, read [MMD Behavior](08-mmd-behavior.md).
 5. When the request is to check how broken a PMM is or whether it is safe, read [Safety Validation](10-validation.md).
+6. When the request is to collect files, package a project or organize assets, read [Dependencies and Layout](11-dependencies.md).
 
 ## 3. Section References
 
@@ -40,6 +42,7 @@ The documents refer to sections of other documents with these short names.
 | Behavior | 08 MMD Behavior |
 | Procedures | 09 Procedures |
 | Validation | 10 Safety Validation |
+| Dependencies | 11 Dependencies and Layout |
 
 For example, "PMM 5.2" means section 5.2 of the PMM File Format.
 

@@ -248,7 +248,7 @@ If corrupted bytes in the middle prevent further reading, search for the start o
 
 ### 7.1 Packaging (Collecting)
 
-Gather every file used by the PMM into one folder so that the folder can be opened on its own. An example layout:
+Gather every file used by the PMM into one folder so that the folder can be opened on its own. An example layout. Choose the layout method in chapter 5 of [Dependencies and Layout](11-dependencies.md).
 
 | Output | Contents |
 | --- | --- |
@@ -271,15 +271,7 @@ Steps:
 
 ### 7.2 Following Dependencies
 
-| Source file | Dependencies |
-| --- | --- |
-| pmx | Material textures, sphere maps, toon textures. Shared toons (referenced by number) and `screen.bmp` are provided by MMD and are not collected |
-| pmd | Material texture names (several names separated by `*`) |
-| x (text format) | Texture file names written inside. Also an fx file with the same name, if present |
-| x (binary format) | Cannot be followed. Tell the user |
-| fx, fxsub | `#include` references and file names with an extension inside quotes. Referenced fx files are followed recursively |
-
-Relative paths of dependencies are searched in the folder of the referencing file, the folder of the top-level file, and their common folder, in that order.
+How to follow dependencies is described in chapters 2 to 4 of [Dependencies and Layout](11-dependencies.md).
 
 ### 7.3 Relinking Paths (Moving a Project)
 
