@@ -1,7 +1,7 @@
 # pmm-editor
 
 MMD/PMM と、MME/EMMを扱うための資料です。ファイルの形式に加えて、複製、安全性検証、外部親編集、モーション適用と抽出、修復、最適化、パッケージ化などの作業手順をまとめています。<br>
-[PmmFileManager](https://booth.pm/ja/items/8052153)のIOライブラリにも使っています。
+[PmmFileManager](https://booth.pm/ja/items/8052153) のIOライブラリにも使っています。
 
 ## 読む順番
 
