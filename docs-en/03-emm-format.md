@@ -161,6 +161,9 @@ The `Owner` value takes one of these forms.
 | `<object name>` | The tab was created by the effect assigned to that object |
 | `<object name>[n]` | The tab was created by the effect assigned to the n-th material of that object |
 | `<object name>@<name>` | The tab was created by an assignment inside another tab `[Effect@name]` |
+| `<object name>[n]@<name>` | A combination of the two forms above |
+
+`<name>` may be followed by `(number)`.
 
 The `Owner` line only identifies the owner; it does not assign anything.
 

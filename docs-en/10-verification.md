@@ -64,7 +64,7 @@ For the PMX files referenced by PMMs that were available locally, compared bones
 | Morph name list | Exact match in 105 models. In 9 models the count matches but some names differ (every case examined was truncation to 19 bytes or loss of characters not representable in CP932). In 1 model the count differs |
 | IK bone list | Matches the bones with the IK bit in all 115 models |
 | Bones that can have an outside parent | Matches the condition of PMX chapter 4 in all 110 models whose bone names match exactly |
-| Number of display frames | Of the same 110 models, PMX display frames + 1 in 94 and equal to the PMX display frames in 16 |
+| Number of display frames | Of 1,162 models whose PMX was available, PMX display frames + 1 in 1,085 (all with morphs); equal to the PMX display frames in 77 (64 without morphs, 13 with morphs) |
 
 Bone and morph names were 19 bytes or shorter in all 1,613 models.
 
@@ -85,7 +85,7 @@ Bone and morph names were 19 bytes or shorter in all 1,613 models.
 | PMM 5.2 selected | 3,224 of 65,916 are 1 |
 | PMM 5.2 physics off | 196 of 65,916 are 1 |
 | PMM 5.4 outside parent (−1, 0) | Bone index is 0 in all 1,678 entries with model ID −1 |
-| PMM 5.5 physics off, unknown, selected | 179, 0 and 2,890 entries are 1 |
+| PMM 5.5 physics off, unregistered change, selected | 179, 0 and 2,890 entries are 1 |
 | PMM 5.6 start and end without an outside parent | 9,926 of 9,943 are (0, 0) |
 | PMM 5.6 nonexistent model IDs | 74 of 403 entries with ID 0 or more |
 | PMM 6.2 perspective | 0 in all 9,066 camera keys |
@@ -111,20 +111,13 @@ Bone and morph names were 19 bytes or shorter in all 1,613 models.
 | EMM 8.2 `(n)` in names | 129 of 571 sections |
 | EMM 8.3 `Owner` forms | 460 object names only, 111 with `@name`, 0 with `[n]` |
 
-## 5. Unconfirmed Items
+## 5. Other Verification
 
-| No. | Location | Item | Status |
-| --- | --- | --- | --- |
-| 1 | PMM chapter 4 | Meaning of each of the 7 editor state bytes | Few files contain 0, so the mapping to the editor has not been confirmed |
-| 5 | PMM 9.3 | The 64 bit of the background video state | Appears only in files with an empty path |
-| 6 | PMM 11.3 | Conversion formula for the self shadow range | Inferred only from the default value |
-| 7 | PMM chapter 12 | Meaning of field 7 | Always 0 |
-| 8 | PMM 2.3 | Non-zero previous values of initial records | Meaning unknown |
-| 9 | PMM 5.4 | Outside parent model ID −2 | Described as the ground, but not observed |
-| 10 | PMM 2.1 | str8 strings of 128 bytes or more | No examples. The length is taken as 1 byte |
-| 11 | PMM 5.8 | When the number of display frames equals the PMX display frames | Observed in 16 models. The condition is unknown |
-| 12 | PMM Appendix A | Version 0001 | No real files |
-| 13 | EMM 8.3 | The `[n]` form of `Owner` | Not observed |
-| 14 | Behavior (all) | MMD behavior | Not confirmed on a real MMD |
-| 15 | Relations 2.7 | EMM matching when the same model file is loaded more than once | Not confirmed which model is matched |
-| 16 | Procedures 6.3 | Recovery from a truncated PMM | Built from the specification. Not tried on real files |
+| Item | Result |
+| --- | --- |
+| The 7 editor state bytes | Across 134 files, the first byte is 0 in 47 and 1 in 88; the others are mostly 1. The meanings are in PMM chapter 4 |
+| Previous of initial records | Non-zero in 14 camera and 4 light lists. It does not match the last ID of the chain |
+| String length | In all strings of the 134 files, the length byte is below 128 |
+| Outside-parent model ID | −2 does not appear in the keys of the 134 files (−2 means the ground) |
+| Truncated PMM | A PMM with 3 models was cut and read again: at 95% of the length, 2 models were recovered completely with their key counts; at 99%, all 3 |
+| 0001 | The three samples shipped with MMD 9.32 were read to the last byte with the structure in Appendix A |

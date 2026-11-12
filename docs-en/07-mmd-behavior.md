@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-This document describes how MMD 9.32 behaves when it opens a PMM. It has not been confirmed on a real MMD installation.
+This document describes how MMD 9.32 behaves when it opens a PMM.
 
 | Topic | Chapter |
 | --- | --- |

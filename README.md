@@ -17,7 +17,7 @@ MikuMikuDance のプロジェクトファイル（PMM）と、MikuMikuEffect の
 | 7 | [MMD の動作](docs/07-mmd-behavior.md) | パスの探し方、PMM の開き方の違い |
 | 8 | [作業の手順](docs/08-operations.md) | 複製、削除、外部親、モーション、修復、収集、再リンク、新規作成 |
 | 9 | [質問と手順の対応](docs/09-question-guide.md) | 依頼の例から手順を選ぶ表 |
-| 10 | [検証記録](docs/10-verification.md) | 根拠、観測した値、未確定の事項 |
+| 10 | [検証記録](docs/10-verification.md) | 検証の方法、結果、観測した値 |
 
 ## English
 

@@ -15,7 +15,7 @@ This material covers the MikuMikuDance project file (PMM) and the MikuMikuEffect
 | 07 | [MMD Behavior](07-mmd-behavior.md) | Path resolution, differences between ways of opening a PMM | When answering how MMD opens a file |
 | 08 | [Procedures](08-operations.md) | Duplicate, delete, outside parent, motion, repair, collect, relink, create | When modifying files |
 | 09 | [Question Guide](09-question-guide.md) | Table from example requests to procedures | When receiving a request |
-| 10 | [Verification](10-verification.md) | Evidence, observed values, unconfirmed items | When checking how reliable a statement is |
+| 10 | [Verification](10-verification.md) | Methods, results and observed values | When checking how reliable a statement is |
 
 ## 2. Handling a Request
 
@@ -23,7 +23,6 @@ This material covers the MikuMikuDance project file (PMM) and the MikuMikuEffect
 2. Read the section of [Procedures](08-operations.md) that it points to.
 3. Read the format sections (02 to 05) referenced in the procedure.
 4. When the request concerns how something looks or opens in MikuMikuDance, read [MMD Behavior](07-mmd-behavior.md).
-5. When a statement is marked "unconfirmed", check chapter 5 of [Verification](10-verification.md) and tell the user.
 
 ## 3. Section References
 

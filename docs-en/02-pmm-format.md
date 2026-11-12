@@ -6,8 +6,6 @@ PMM is the project file of MikuMikuDance. A single binary file holds the models,
 
 Terms are defined in [Basics](01-basics.md). The relationship to PMX is described in [PMX Reference](05-pmx-reference.md) and [File Relationships](06-relations.md). How MMD opens a PMM is described in [MMD Behavior](07-mmd-behavior.md).
 
-Items whose meaning has not been confirmed are marked "unconfirmed" in the tables. The reasons are listed in chapter 5 of [Verification](10-verification.md).
-
 ## 2. Notation and Common Structures
 
 ### 2.1 Types
@@ -59,7 +57,7 @@ The chain follows these rules.
 - Following next from the initial record visits the keys of that element in ascending frame order.
 - The previous of the first additional record is the ID of the initial record.
 - IDs of additional records appear in ascending order in the file and are not smaller than the number of initial records. Gaps are allowed.
-- The previous of an initial record is usually 0. The meaning of other values is unconfirmed, so keep the original value when reading and writing.
+- The previous of an initial record is a value MMD does not use. Some files hold a non-zero value in the camera (14 files) and light (4 files) lists. The value does not match the last ID of the chain. Keeping the original value when reading and writing is enough.
 
 ### 2.4 Interpolation Curves
 
@@ -187,9 +185,9 @@ Outside-parent values follow these rules.
 
 | Parent model ID | Parent bone index | Meaning |
 | --- | --- | --- |
-| −1 | 0 | No outside parent |
+| −2 | 0 | Ground |
+| −1 | 0 | None |
 | 0 or more | Index of an existing bone | Follows that bone of that model. MMD rejects a combination that does not point to a bone |
-| −2 | 0 | Follows the ground (unconfirmed) |
 
 ### 5.5 Current Bone State (31 bytes)
 
@@ -233,7 +231,7 @@ The model ID is the number that identifies a model inside the PMM. It is referen
 
 In files saved by MMD, IDs do not always run from 0 in order. A writer may renumber them from 0. In that case every reference above must be rewritten with the same mapping.
 
-For most models, the number of display frames is the number of PMX display frames plus 1. Some models have the same number as the PMX. When this number does not match the loaded model, MMD ignores the open state of the display frames and continues. A mismatch therefore does not make loading fail.
+For a model that has morphs, the number of display frames is the number of PMX display frames plus 1 (the facial frame is added). For a model without morphs, it equals the number of PMX display frames. Of 1,162 entries examined, 1,149 follow this rule; the other 13 (with morphs) had the same number as the PMX. When this number does not match the loaded model, MMD ignores the open state of the display frames and continues. A mismatch therefore does not make loading fail.
 
 ## 6. Camera
 
@@ -404,7 +402,7 @@ The background video and background image fields are present even when the path 
 | --- | --- |
 | 0 | None |
 | 1 | Background video shown |
-| 64, 65 | Unconfirmed |
+| 64, 65 | Background video is not used. They appear when the path is empty (loading enables the video only when the value is 1) |
 
 ### 9.4 Screen Capture Mode
 
@@ -458,7 +456,7 @@ The gravity keyframe list uses the layout of 2.3 with the following 34-byte reco
 
 ### 11.3 Range Value
 
-The value in the file uses a different scale from the value shown in the editor. The editor default of 8875 is stored as 0.01125. The conversion appears to be "editor value = 10000 − file value × 100000", but this is unconfirmed.
+The value in the file uses a different scale from the value shown in the editor. The editor default of 8875 is stored as 0.01125. The conversion is "editor value = 10000 − file value × 100000" (rounded).
 
 ## 12. Color and Follow Settings
 
@@ -470,7 +468,7 @@ The value in the file uses a different scale from the value shown in the editor.
 | 4 | Camera follow bone | i32 | |
 | 5 | Follow orientation | f32 × 16 | 4 × 4 matrix. Identity when there is no follow target |
 | 6 | Camera follow enabled | bool | |
-| 7 | Unknown | u8 | Unconfirmed |
+| 7 | Camera follow suppression | u8 | Only read and written; MMD does not use it. 0 in all 134 files |
 | 8 | Ground physics | bool | |
 | 9 | Jump-to frame | i32 | |
 
@@ -498,11 +496,62 @@ Range selection target values:
 
 ## Appendix A. Differences in Version 0001
 
-Version 0001 is written by old versions of MikuMikuDance. It has not been checked against real files.
+Version 0001 is written by old versions of MikuMikuDance. Only the trailing digits of the signature are `0001`. The three sample PMMs shipped with MMD 9.32 are read to the last byte with the structure below.
+
+### A.1 Header
 
 | Item | Difference from 0002 |
 | --- | --- |
-| Model | The name is a fixed 20 bytes. There are no English name, bone name, morph name, IK or outside-parent lists; the counts come from the model file |
-| Bone key | No physics-off byte (57 bytes) |
+| Editor state | 6 bytes (0002 has 7). They correspond to the 2nd to 7th bytes of 0002 |
+| Right after the model count | One 20-byte name per model |
+
+### A.2 Model
+
+| Order | Item | Type |
+| --- | --- | --- |
+| 1 | Model ID | u8 |
+| 2 | Model name | fix(20) |
+| 3 | Model path | fix(256) |
+| 4 | Render order | u8 |
+| 5 | Visible | bool |
+| 6 | Selected bone | i32 |
+| 7 | Selected morphs | i32 × 4 |
+| 8 | Display frame count and open states | u8 followed by that many bool |
+| 9 | Key area vertical scroll, last frame | i32 × 2 |
+| 10 | Bone key list | Initial records are 57 bytes × bone count; added records are a count (i32) followed by 61 bytes (ID and 57 bytes) × count |
+| 11 | Morph key list | Initial records are 17 bytes × morph count; added records are a count followed by 21 bytes × count |
+| 12 | Display/IK key list | Initial record is 13 + IK count + 1 bytes; added records are preceded by an ID (i32) |
+| 13 | Current bone state | 34 bytes × bone count (vec3, quat, bool × 2) |
+| 14 | Current morph values, current IK state | f32 × morph count, bool × IK count |
+
+The bone count, morph count (including the base morph) and IK count are counted from the model file (PMD). There are no outside-parent slots.
+
+### A.3 Other Differences
+
+| Section | Difference from 0002 |
+| --- | --- |
 | Camera key | No parent model ID or parent bone index (70 bytes) |
 | Gravity keys | Not present |
+| Accessory current state | Ends with a 1-byte bool (0002 ends with two bool bytes) |
+| Edit, playback, background and drawing settings | Same as 0002 up to the capture mode |
+
+### A.4 Conditions at the End
+
+After the capture mode, each block ends with a 1-byte marker (1 means the next block follows). When the marker is not 1, the file ends there. The blocks are in this order.
+
+| Order | Content |
+| --- | --- |
+| 1 | Post-draw start position, ground shadow brightness, additive blend per model, additive blend per accessory |
+| 2 | Ground shadow transparency, marker |
+| 3 | Edge thickness per model (f32), marker |
+| 4 | Physics mode, gravity (acceleration, noise amount, direction, noise enabled), marker |
+| 5 | Self-shadow mode, range, per-model setting, marker |
+| 6 | Self-shadow key list, marker |
+| 7 | Edge color (i32 × 3), marker |
+| 8 | Black background, marker |
+| 9 | Camera parent (model ID, bone index), camera parent list, marker. This block is always present |
+| 10 | Follow orientation matrix, camera follow, follow suppression, marker |
+| 11 | Ground physics, marker |
+| 12 | Calculation order per model |
+
+Among the samples, one ends after block 4, one after block 11, and one after block 9.

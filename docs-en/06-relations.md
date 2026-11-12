@@ -76,9 +76,9 @@ The EMM and the PMM may be saved at different times, so the EMM numbering may no
 | --- | --- |
 | Render order was changed and only the PMM was saved after the EMM | The numbering no longer follows the PMM render order |
 | A model or accessory was replaced | The `[Object]` path no longer matches the PMM path |
-| The same model file was loaded more than once | Matching by file name alone cannot tell which object is meant |
+| The same model file was loaded more than once | All objects with the same path bind to the first matching EMM record, and that record's assignments apply only to the object matched last. The other objects get no assignments |
 
-Because matching uses paths, assignments survive when only the numbering drifts. When a path no longer matches, the assignments of that object are lost.
+Matching uses the object kind (model or accessory) and the path. It compares, in order, the full path, the absolute form, the path relative to the EMM folder, and the tail of the path, and when none matches it compares file names only. Because matching uses paths, assignments survive when only the numbering drifts. When a path no longer matches, the assignments of that object are lost.
 
 ### 2.8 EMM Changes Needed When Editing a PMM
 
