@@ -1,8 +1,8 @@
-# Dependencies and Layout
+# Packaging
 
 ## 1. Overview
 
-This document describes how to follow every file used by a PMM, and every file those files refer to, collect them, and arrange them in the layout the user wants. Chapters 2 to 4 cover how to follow references, and chapter 5 covers how to arrange the files. The overall procedure is in chapter 7 of [Procedures](09-operations.md).
+This document describes how to follow every file used by a PMM, and every file those files refer to, collect them, and arrange them in the layout the user wants. Chapters 2 to 4 cover how to follow references, and chapter 5 covers how to arrange the files. An example of the layout after collecting is in 5.5, and moving a project is described in [Migration](12-migration.md).
 
 ## 2. Overview of References
 
@@ -19,7 +19,7 @@ This document describes how to follow every file used by a PMM, and every file t
 | vac | x | Line 2 (3.4) |
 | fx, fxsub | fx, fxsub, textures | `#include` and file names in quotes (3.6) |
 
-A PMM holds no VMD paths. The motion is inside the PMM, so it is not an object to collect. To hand it over as VMD, extract it with 5.1 and 5.2 of [Procedures](09-operations.md).
+A PMM holds no VMD paths. The motion is inside the PMM, so it is not an object to collect. To hand it over as VMD, extract it with 5.1 and 5.2 of [In-File Operations](09-operations.md).
 
 ## 3. How to Read References
 
@@ -117,7 +117,7 @@ Names with the extension pmx, pmd or x are names the effect uses to select the o
 | Method | Layout | Suited to |
 | --- | --- | --- |
 | Keep the original hierarchy | Take the common folder (decided as the source root of 7.3) as the root and copy each file to its original relative position | Putting the files back later, or handing them over in the original structure |
-| By project | Under `<output>\<project name>\`, copy the PMM, EMM, models, accessories, effects and media. The structure is the example in 7.1 of [Procedures](09-operations.md) | Handing over a project as one folder |
+| By project | Under `<output>\<project name>\`, copy the PMM, EMM, models, accessories, effects and media. The structure is the example in 5.5 | Handing over a project as one folder |
 | By asset | Create a folder per kind, with names chosen by the user. Example: models in `<model folder name>\<model name>\`, accessories in `<accessory folder name>\`, effects in `<effect folder name>\`, motion in `<animation folder name>\`. Inside a model folder, keep the original hierarchy as in 5.1 | Organizing assets by kind |
 | By model | Create a folder per model and put in it the model, its dependencies, the EMD of the model and the motion (VMD) of the model | Handing over a model together with its motion |
 
@@ -140,3 +140,26 @@ When the user's request does not fit a method, arrange the files as the user spe
 1. Confirm that every path in the written PMM and EMM exists (Validation chapter 5).
 2. Confirm again with the procedure of chapter 4 that the references of the pmx, pmd, x and fx files are found in the copies.
 3. Confirm that every file in the list was copied.
+
+### 5.5 Collecting Procedure and Layout Example
+
+Gather every file used by the PMM into one folder so that the folder can be opened on its own. An example layout. Choose the layout method in chapter 5 of [Packaging](11-dependencies.md).
+
+| Output | Contents |
+| --- | --- |
+| `<output>\<PMM name>.pmm` | PMM with rewritten paths |
+| `<output>\<PMM name>.emm` | EMM with rewritten paths |
+| `<output>\Files\Models\000\` onward | Models and their dependencies, one 3-digit folder per model |
+| `<output>\Files\Accessories\000\` onward | Accessories and their dependencies |
+| `<output>\Files\Media\` | Audio, background video, background image |
+| Under `<output>\Files\` | Effects referenced by the EMM, keeping their original hierarchy |
+| `<output>\manifest.txt` | List of collected files (UTF-8) |
+
+Steps:
+
+1. Resolve the paths of models, accessories, audio, background video and background image in the PMM to existing files. Search relative paths in the PMM folder, then in the MMD executable folder.
+2. Follow the dependencies of each file (chapter 4).
+3. Copy the dependencies, keeping their position relative to the original file.
+4. Rewrite the PMM paths to the absolute paths of the copies. Abort if a path exceeds 255 bytes.
+5. Rewrite the EMM paths (`[Object]` and effect lines) and the paths of the `Obj` lines of the EMDs to the copies.
+6. Write the PMM and EMM in the same encoding as the originals.

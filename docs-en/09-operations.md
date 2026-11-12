@@ -1,8 +1,8 @@
-# Procedures
+# In-File Operations
 
 ## 1. Overview
 
-This document describes procedures for modifying PMM and EMM files.
+This document describes procedures that are completed entirely within PMM and EMM files. Collecting files is in [Packaging](11-dependencies.md), and moving a project is in [Migration](12-migration.md).
 
 | Task | Section |
 | --- | --- |
@@ -11,9 +11,8 @@ This document describes procedures for modifying PMM and EMM files.
 | Changing outside parents and camera follow | 4 |
 | Extracting and importing motion | 5 |
 | Repairing and recovering damaged PMM files | 6 |
-| Packaging (collecting) and relinking paths | 7 |
-| Creating a PMM from scratch | 8 |
-| Other cleanup | 9 |
+| Creating a PMM from scratch | 7 |
+| Other cleanup | 8 |
 
 References such as "PMM 5.2" point to [PMM File Format](03-pmm-format.md), "EMM chapter 7" to [EMM File Format](04-emm-format.md), and "Relations 2.3" to [File Relationships](07-relations.md).
 
@@ -41,7 +40,7 @@ Neither PMM nor EMM records its encoding. Decide in this order.
 
 The presence of broken characters alone does not decide it. In a 1-byte code page (874, 1250 to 1258) every byte is a character.
 
-When writing, use the same encoding as when reading. Rules for converting to another encoding are in 9.3.
+When writing, use the same encoding as when reading. Rules for converting to another encoding are in 8.3.
 
 ### 2.3 Rebuilding Key Chains
 
@@ -244,62 +243,20 @@ If corrupted bytes in the middle prevent further reading, search for the start o
 2. Confirm that every key chain satisfies the rules of PMM 2.3.
 3. Confirm that the items of Validation chapters 3 to 6 give no errors or warnings.
 
-## 7. Packaging and Relinking Paths
-
-### 7.1 Packaging (Collecting)
-
-Gather every file used by the PMM into one folder so that the folder can be opened on its own. An example layout. Choose the layout method in chapter 5 of [Dependencies and Layout](11-dependencies.md).
-
-| Output | Contents |
-| --- | --- |
-| `<output>\<PMM name>.pmm` | PMM with rewritten paths |
-| `<output>\<PMM name>.emm` | EMM with rewritten paths |
-| `<output>\Files\Models\000\` onward | Models and their dependencies, one 3-digit folder per model |
-| `<output>\Files\Accessories\000\` onward | Accessories and their dependencies |
-| `<output>\Files\Media\` | Audio, background video, background image |
-| Under `<output>\Files\` | Effects referenced by the EMM, keeping their original hierarchy |
-| `<output>\manifest.txt` | List of collected files (UTF-8) |
-
-Steps:
-
-1. Resolve the paths of models, accessories, audio, background video and background image in the PMM to existing files. Search relative paths in the PMM folder, then in the MMD executable folder.
-2. Follow the dependencies of each file (7.2).
-3. Copy the dependencies, keeping their position relative to the original file.
-4. Rewrite the PMM paths to the absolute paths of the copies. Abort if a path exceeds 255 bytes.
-5. Rewrite the EMM paths (`[Object]` and effect lines) and the paths of the `Obj` lines of the EMDs to the copies.
-6. Write the PMM and EMM in the same encoding as the originals.
-
-### 7.2 Following Dependencies
-
-How to follow dependencies is described in chapters 2 to 4 of [Dependencies and Layout](11-dependencies.md).
-
-### 7.3 Relinking Paths (Moving a Project)
-
-Rewrite the absolute paths in the PMM and EMM of a project that was moved as a whole folder, so that they point to the new location. This is not a search for broken paths.
-
-1. Determine the common folder before the move (source root): the deepest folder shared by the PMM location and every absolute path in the PMM and EMM.
-2. Determine the folder after the move (destination root).
-3. Convert relative EMM paths that start with `UserFile` (EMM 5.2) to absolute paths in this order.
-   1. If found in a `UserFile` folder under the source root, use that absolute path and include it in the rewrite.
-   2. If found only in the `UserFile` of the MMD executable folder, treat it as a shared asset and do not rewrite it.
-   3. If found in neither, stop and show the list.
-4. For every absolute path, replace the leading source root with the destination root. If any path does not start with the source root, stop without changing anything and show the list.
-5. Write the new PMM and an EMM with the same name.
-
-## 8. Creating a PMM from Scratch
+## 7. Creating a PMM from Scratch
 
 Procedure for creating a new PMM from a given model and motion.
 
-### 8.1 Steps
+### 7.1 Steps
 
-1. Build a PMM skeleton without models or accessories using the values of 8.2.
+1. Build a PMM skeleton without models or accessories using the values of 7.2.
 2. For each model, build the lists from the PMX (chapter 4 of [PMX Reference](06-pmx-reference.md)). Write the path as an absolute path.
-3. Build each model block with the values of 8.3.
+3. Build each model block with the values of 7.3.
 4. Import the motion VMD with the procedure of 5.3. If there is a camera VMD, import it into the camera keys.
 5. Set the playback end frame and each model's last frame to at least the largest key frame.
 6. Write the file with the procedures of 2.3 and 2.4.
 
-### 8.2 Values for the Whole PMM
+### 7.2 Values for the Whole PMM
 
 These values are common in real files. They are not necessarily the values of a freshly started MMD.
 
@@ -323,9 +280,9 @@ These values are common in real files. They are not necessarily the values of a 
 | Color and follow | Edge color (0, 0, 0), black background 0, follow target (−1, 0), identity matrix, follow 0, unknown 0, ground physics 1, jump-to frame 0 |
 | Extension | Present 1, (model ID, 0) for each model |
 
-### 8.3 Values for a Model Block
+### 7.3 Values for a Model Block
 
-As in 8.2, these values are common in real files.
+As in 7.2, these values are common in real files.
 
 | Item | Value |
 | --- | --- |
@@ -346,9 +303,9 @@ As in 8.2, these values are common in real files.
 | Current outside-parent state | All (0, 0, −1, 0) |
 | Rendering info | Additive blending 0, edge width 1.0, self shadow 1 |
 
-## 9. Other Cleanup
+## 8. Other Cleanup
 
-### 9.1 Removing Redundant Keys
+### 8.1 Removing Redundant Keys
 
 Removing the following keys does not change the playback result.
 
@@ -360,11 +317,11 @@ Removing the following keys does not change the playback result.
 
 Interpolation curves are not considered. If the values before and after are the same, the value in between does not change regardless of the curve shape.
 
-### 9.2 Turning Physics Off
+### 8.2 Turning Physics Off
 
 Set the physics mode (field 31 of PMM 9.1) to 0.
 
-### 9.3 Changing the Encoding
+### 8.3 Changing the Encoding
 
 1. Read the PMM and EMM in the original encoding (2.2).
 2. Check that names and paths can be written in the new encoding. If a character cannot be written, tell the user and stop.

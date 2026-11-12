@@ -18,10 +18,11 @@ MMD/PMM と、MME/EMMを扱うための資料（スキル）です。ファイ�
 | 6 | [PMX の参照部分](docs/06-pmx-reference.md) | PMM の一覧を PMX から作る方法 |
 | 7 | [ファイル同士の関係](docs/07-relations.md) | PMM と EMM、PMX、VMD の対応 |
 | 8 | [MMD の動作](docs/08-mmd-behavior.md) | パスの探し方、PMM の開き方の違い |
-| 9 | [作業の手順](docs/09-operations.md) | 複製、削除、外部親、モーション、修復、収集、再リンク、新規作成 |
+| 9 | [ファイル内操作](docs/09-operations.md) | 複製、削除、外部親、モーション、修復、新規作成 |
 | 10 | [安全性検証](docs/10-validation.md) | 構造、上限、パス、値の検査 |
 | 11 | [パッケージ化](docs/11-dependencies.md) | 依存関係（二次参照含む）、参照のたどり方、収集ファイルの配置 |
-| 12 | [質問と手順の対応](docs/12-question-guide.md) | 依頼の例から手順を選ぶ表 |
+| 12 | [移行](docs/12-migration.md) | プロジェクトの別の場所への移動、パスの書き換え |
+| 13 | [質問と手順の対応](docs/13-question-guide.md) | 依頼の例から手順を選ぶ表 |
 
 ## 検証記録
 

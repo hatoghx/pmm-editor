@@ -18,10 +18,11 @@ They are also used in the IO library of [PmmFileManager](https://booth.pm/ja/ite
 | 6 | [PMX Reference](docs-en/06-pmx-reference.md) | How PMM lists are built from PMX |
 | 7 | [File Relationships](docs-en/07-relations.md) | Correspondence between PMM and EMM, PMX, VMD |
 | 8 | [MMD Behavior](docs-en/08-mmd-behavior.md) | Path resolution, differences between ways of opening a PMM |
-| 9 | [Procedures](docs-en/09-operations.md) | Duplicate, delete, outside parent, motion, repair, collect, relink, create |
+| 9 | [In-File Operations](docs-en/09-operations.md) | Duplicate, delete, outside parent, motion, repair, create |
 | 10 | [Safety Validation](docs-en/10-validation.md) | Checks of structure, limits, paths and values |
-| 11 | [Dependencies and Layout](docs-en/11-dependencies.md) | How to follow references, layout of collected files |
-| 12 | [Question Guide](docs-en/12-question-guide.md) | Table from example requests to procedures |
+| 11 | [Packaging](docs-en/11-dependencies.md) | Dependencies (including second-level references), how to follow references, layout of collected files |
+| 12 | [Migration](docs-en/12-migration.md) | Moving a project elsewhere, rewriting paths |
+| 13 | [Question Guide](docs-en/13-question-guide.md) | Table from example requests to procedures |
 
 ## Verification Record
 

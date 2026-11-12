@@ -18,10 +18,11 @@
 | 6 | [PMX 的参照部分](docs-zhcn/06-pmx-reference.md) | 由 PMX 生成 PMM 中各列表的方法 |
 | 7 | [文件之间的关系](docs-zhcn/07-relations.md) | PMM 与 EMM、PMX、VMD 的对应 |
 | 8 | [MMD 的行为](docs-zhcn/08-mmd-behavior.md) | 路径的查找方式、PMM 打开方式的差异 |
-| 9 | [操作步骤](docs-zhcn/09-operations.md) | 复制、删除、外部亲、动作、修复、收集、重新链接、新建 |
+| 9 | [文件内操作](docs-zhcn/09-operations.md) | 复制、删除、外部亲、动作、修复、新建 |
 | 10 | [安全性检验](docs-zhcn/10-validation.md) | 结构、上限、路径、数值的检查 |
-| 11 | [依赖文件与布局](docs-zhcn/11-dependencies.md) | 引用的追踪方法、收集文件的布局 |
-| 12 | [问题与步骤的对应](docs-zhcn/12-question-guide.md) | 根据请求示例选择步骤的表 |
+| 11 | [打包](docs-zhcn/11-dependencies.md) | 依赖关系（含二次引用）、引用的追踪方法、收集文件的布局 |
+| 12 | [迁移](docs-zhcn/12-migration.md) | 将工程移到别处、改写路径 |
+| 13 | [问题与步骤的对应](docs-zhcn/13-question-guide.md) | 根据请求示例选择步骤的表 |
 
 ## 验证记录
 

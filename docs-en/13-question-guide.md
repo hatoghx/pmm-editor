@@ -66,12 +66,14 @@ This table maps questions and requests to the sections to use. Short section nam
 
 | Example question | Confirm | Sections |
 | --- | --- | --- |
-| I want a list of the files the PMM uses | Location of the MMD executable folder | Step 1 of Procedures 7.1, 7.2 |
-| I want to gather the PMM and its assets into one folder | Output folder, location of the MMD executable folder | Procedures 7.1, 7.2 |
+| I want a list of the files the PMM uses | Location of the MMD executable folder | Dependencies chapters 2 to 4 |
+| I want to gather the PMM and its assets into one folder | Output folder, location of the MMD executable folder | Dependencies chapters 4 and 5 |
 | I want models in a folder with one name and motion in a folder with another name | Folder names, how to hand over the motion | Dependencies chapter 5, Procedures 5.1 |
 | I want everything needed to be placed in a folder named after the project | Project name, output location | Dependencies 5.2 |
 | I want to collect every texture and effect a model refers to | | Dependencies chapters 2 to 4 |
-| I moved the whole folder and want the paths to follow | Folders before and after the move | Procedures 7.3 |
+| I moved the whole folder and want the paths to follow | Folders before and after the move | Migration chapter 5 |
+| I want to move the project in this folder to another folder | Source and destination, copy or move | Migration chapters 2 to 4 |
+| I want to move a project to another computer | Location of the MMD executable folder at the destination | Migration chapter 6 |
 | MMD says a model cannot be found | Path in the PMM, how it was opened | Behavior chapter 2, 4.1, Procedures 7.3 |
 | Effects were lost after moving to another PC | Whether the EMM exists and its name, paths | Relations 2.1, 2.6, 2.7 |
 | Which model is `Pmd3` in the EMM? | | Relations 2.3 |

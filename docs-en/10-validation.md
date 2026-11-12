@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-This document gives the procedure for checking whether a PMM is intact, whether MMD can open it safely, and whether it is fine to write out. The checks fall into four kinds: structure, limits, paths and values. How to repair the problems found is in chapter 6 of [Procedures](09-operations.md).
+This document gives the procedure for checking whether a PMM is intact, whether MMD can open it safely, and whether it is fine to write out. The checks fall into four kinds: structure, limits, paths and values. How to repair the problems found is in chapter 6 of [In-File Operations](09-operations.md).
 
 Report the result in three levels.
 
@@ -43,7 +43,7 @@ Do not modify the original. When repairing, write out under another name (Proced
 
 ## 4. Limit Checks
 
-Count names and counts in the code page of the PMM. A bone or morph name over 19 bytes no longer matches the name in the model file (Procedures 9.3).
+Count names and counts in the code page of the PMM. A bone or morph name over 19 bytes no longer matches the name in the model file (Procedures 8.3).
 
 | Target | Limit | Unit | Note |
 | --- | --- | --- | --- |

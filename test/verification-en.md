@@ -160,7 +160,7 @@ A PMM with one model and 17 display frames (16 in the PMX; the model has morphs)
 
 ## 8. Reading Dependencies
 
-The way of reading described in Dependencies and Layout (chapter 11) was checked against the files at hand.
+The way of reading described in Packaging (chapter 11) was checked against the files at hand.
 
 | Target | Result |
 | --- | --- |
