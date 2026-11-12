@@ -55,6 +55,8 @@ This table maps questions and requests to the sections to use. Short section nam
 | The PMM is broken and will not open; I want at least the contents | How it is broken | Procedures 6.1 to 6.5, 5.1 |
 | Objects fly away or values look wrong when opened | | Procedures 6.2 |
 | Names or paths are garbled | Language of the system that created the file | Procedures 2.2, 9.3 |
+| Is this PMM intact, and can MMD open it safely? | Scope of the checks (all or part) | Validation chapters 1 to 7 |
+| Are the name lengths, path lengths and counts within the limits? | | Validation chapters 4 and 5 |
 | Is this file a PMM, and which version? | | PMM chapter 4, Appendix A |
 | I want a smaller file | | Procedures 9.1 |
 | I want to turn physics off | | Procedures 9.2 |

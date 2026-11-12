@@ -242,6 +242,7 @@ If corrupted bytes in the middle prevent further reading, search for the start o
 
 1. Read the written PMM again and confirm that it reads to the last byte.
 2. Confirm that every key chain satisfies the rules of PMM 2.3.
+3. Confirm that the items of Validation chapters 3 to 6 give no errors or warnings.
 
 ## 7. Packaging and Relinking Paths
 
