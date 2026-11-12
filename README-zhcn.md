@@ -1,8 +1,6 @@
 # pmm-editor
 
-[日本語](README.md) [English](README-en.md)
-
-[文档 (简体中文)](docs-zhcn/01-index.md)
+[日本語](README.md) / [English](README-en.md)
 
 本资料用于处理 MMD/PMM 与 MME/EMM。除文件格式外，还汇总了复制、安全性检验、外部亲编辑、动作的应用与提取、修复、优化、打包等操作步骤。
 
