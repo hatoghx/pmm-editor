@@ -95,7 +95,7 @@ To renumber, load the EMM, reassign numbers per object, and write it out again. 
 
 ### 3.1 What the PMM Copies from the PMX
 
-For each model, the PMM holds the bone names, morph names, IK list, list of bones that can have an outside parent, and the number of display frames. How they are built is described in chapter 4 of [PMX Reference](05-pmx-reference.md). Keyframes follow the indices of these lists, so if a list disagrees with the PMX, keys end up on different bones.
+For each model, the PMM holds the bone names, morph names, IK list, list of bones that can have an outside parent, and the number of display frames. How they are built is described in chapter 4 of [PMX Reference](06-pmx-reference.md). Keyframes follow the indices of these lists, so if a list disagrees with the PMX, keys end up on different bones.
 
 ### 3.2 Matching When MMD Opens a PMM
 

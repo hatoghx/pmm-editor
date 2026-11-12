@@ -64,11 +64,11 @@ A PMM does not contain the model or accessory files. It stores only their paths.
 | --- | --- |
 | UserFile | The standard folder for assets, located next to the MMD executable |
 | Absolute path | A path written from the drive, such as `C:\` |
-| Relative path | A path based on some folder. MMD and MME have their own rules for the base folder ([MMD Behavior](07-mmd-behavior.md)) |
+| Relative path | A path based on some folder. MMD and MME have their own rules for the base folder ([MMD Behavior](08-mmd-behavior.md)) |
 | ANSI code page | The text encoding determined by the Windows language setting. CP932 (Shift_JIS) on Japanese Windows and CP936 (GBK) on Simplified Chinese Windows |
 
 MMD and MME write strings in files using the ANSI code page. Files created on Japanese Windows use CP932, and files created on Chinese Windows use GBK. The files do not record their encoding, so the reader must determine it.
 
 ## 8. Document List
 
-The list of documents and when to read them is in the [Index](00-index.md).
+The list of documents and when to read them is in the [Index](01-index.md).

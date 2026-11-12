@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-This table maps questions and requests to the sections to use. Short section names such as "Procedures 3.1" follow chapter 3 of the [Index](00-index.md).
+This table maps questions and requests to the sections to use. Short section names such as "Procedures 3.1" follow chapter 3 of the [Index](01-index.md).
 
 ## 2. Rules for Every Request
 

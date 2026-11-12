@@ -11,7 +11,7 @@ There are two kinds of VMD.
 | Model motion | Bone, morph, and display and IK keys | The model name in the header is the name of the target model |
 | Camera motion | Camera, light and self shadow keys | The model name in the header is `カメラ・照明` |
 
-Types are written as in 2.1 of [PMM File Format](02-pmm-format.md). u32 is an unsigned 4-byte integer.
+Types are written as in 2.1 of [PMM File Format](03-pmm-format.md). u32 is an unsigned 4-byte integer.
 
 ## 2. Overall Layout
 
@@ -41,7 +41,7 @@ Types are written as in 2.1 of [PMM File Format](02-pmm-format.md). u32 is an un
 | Rotation | quat | x, y, z, w |
 | Interpolation curves | 64 bytes | See 3.1 |
 
-Bone names are limited to 15 bytes. PMM bone names can be up to 19 bytes, so names of 16 bytes or more do not fit into a VMD (chapter 4 of [File Relationships](06-relations.md)).
+Bone names are limited to 15 bytes. PMM bone names can be up to 19 bytes, so names of 16 bytes or more do not fit into a VMD (chapter 4 of [File Relationships](07-relations.md)).
 
 ### 3.1 Interpolation Layout
 

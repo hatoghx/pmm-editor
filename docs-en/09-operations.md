@@ -15,7 +15,7 @@ This document describes procedures for modifying PMM and EMM files.
 | Creating a PMM from scratch | 8 |
 | Other cleanup | 9 |
 
-References such as "PMM 5.2" point to [PMM File Format](02-pmm-format.md), "EMM chapter 7" to [EMM File Format](03-emm-format.md), and "Relations 2.3" to [File Relationships](06-relations.md).
+References such as "PMM 5.2" point to [PMM File Format](03-pmm-format.md), "EMM chapter 7" to [EMM File Format](04-emm-format.md), and "Relations 2.3" to [File Relationships](07-relations.md).
 
 ## 2. Common Steps
 
@@ -298,7 +298,7 @@ Procedure for creating a new PMM from a given model and motion.
 ### 8.1 Steps
 
 1. Build a PMM skeleton without models or accessories using the values of 8.2.
-2. For each model, build the lists from the PMX (chapter 4 of [PMX Reference](05-pmx-reference.md)). Write the path as an absolute path.
+2. For each model, build the lists from the PMX (chapter 4 of [PMX Reference](06-pmx-reference.md)). Write the path as an absolute path.
 3. Build each model block with the values of 8.3.
 4. Import the motion VMD with the procedure of 5.3. If there is a camera VMD, import it into the camera keys.
 5. Set the playback end frame and each model's last frame to at least the largest key frame.

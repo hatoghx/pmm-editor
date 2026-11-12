@@ -4,7 +4,7 @@
 
 EMM is a text file in which MikuMikuEffect (MME below) stores effect assignments. It records which effect file is assigned to which model or accessory.
 
-Terms are defined in [Basics](01-basics.md). The correspondence with PMM and the numbering rule are in [File Relationships](06-relations.md); the evidence is in [Verification](10-verification.md).
+Terms are defined in [Basics](02-basics.md). The correspondence with PMM and the numbering rule are in [File Relationships](07-relations.md); the evidence is in [Verification](../test/verification-en.md).
 
 ## 2. Basic Syntax
 
@@ -80,7 +80,7 @@ Pmd2 = C:\MMD\Effect\mirror_object.fx
 | `Pmd<number>` | Path of a model file |
 | `Acs<number>` | Path of an accessory file |
 
-Numbers start at 1 and are shared between models and accessories as one sequence. How they are assigned is described in chapter 2 of [File Relationships](06-relations.md). Keys in this section never carry `[n]` or `.show`.
+Numbers start at 1 and are shared between models and accessories as one sequence. How they are assigned is described in chapter 2 of [File Relationships](07-relations.md). Keys in this section never carry `[n]` or `.show`.
 
 ### 5.2 How Paths Are Written
 

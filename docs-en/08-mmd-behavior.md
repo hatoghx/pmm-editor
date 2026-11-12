@@ -83,8 +83,8 @@ A file dialog is shown. Cancelling it aborts the whole load.
 
 ### 4.3 Different Model Structure
 
-What happens when the lists in the PMM disagree with the PMX is described in 3.2 of [File Relationships](06-relations.md).
+What happens when the lists in the PMM disagree with the PMX is described in 3.2 of [File Relationships](07-relations.md).
 
 ### 4.4 Loading the EMM
 
-After the PMM has been loaded, MME loads the EMM with the same name (2.2 of [File Relationships](06-relations.md)).
+After the PMM has been loaded, MME loads the EMM with the same name (2.2 of [File Relationships](07-relations.md)).

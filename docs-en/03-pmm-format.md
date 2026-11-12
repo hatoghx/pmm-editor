@@ -4,7 +4,7 @@
 
 PMM is the project file of MikuMikuDance. A single binary file holds the models, camera, light, accessories, keyframes and editor state. This document covers format version 0002.
 
-Terms are defined in [Basics](01-basics.md). The relationship to PMX is described in [PMX Reference](05-pmx-reference.md) and [File Relationships](06-relations.md). How MMD opens a PMM is described in [MMD Behavior](07-mmd-behavior.md).
+Terms are defined in [Basics](02-basics.md). The relationship to PMX is described in [PMX Reference](06-pmx-reference.md) and [File Relationships](07-relations.md). How MMD opens a PMM is described in [MMD Behavior](08-mmd-behavior.md).
 
 ## 2. Notation and Common Structures
 
@@ -25,7 +25,7 @@ Terms are defined in [Basics](01-basics.md). The relationship to PMX is describe
 
 - Text is encoded in the ANSI code page of the system that saved the file. On Japanese Windows this is CP932 (Shift_JIS).
 - After the NUL of a fix(N) field, leftovers of previously used strings may remain. When reading, cut at the first NUL. When writing, fill everything after the NUL with zeros.
-- Paths are absolute or relative. How relative paths are resolved is described in chapter 2 of [MMD Behavior](07-mmd-behavior.md).
+- Paths are absolute or relative. How relative paths are resolved is described in chapter 2 of [MMD Behavior](08-mmd-behavior.md).
 - Bone and morph names are the PMX names converted to the ANSI code page and truncated to 19 bytes. The cut may fall in the middle of a double-byte character. Characters that the code page cannot represent are lost.
 
 ### 2.3 Keyframe Lists
