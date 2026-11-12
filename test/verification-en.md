@@ -180,3 +180,12 @@ An invalid fx file (`bad.fx`) with the same name and a distinguishing marker was
 | `Obj = relsubad.fx` in an EMD | `relsubad.fx` in the executable folder was read (`relsubad.fx` in the folder of the EMD was not) |
 | `Pmd1 = relsubad.fx` in an EMM | `relsubad.fx` in the executable folder was read |
 | `Default = onlyemmad.fx` in an EMM (the file exists only in the folder of the EMM) | "The effect file does not exist" was reported, and `onlyemmad.fx` in the executable folder was searched |
+
+## 10. Following References in an Existing Project
+
+The procedure of chapter 11 was applied to a PMM (18 models, 10 accessories, 1 audio file) and the EMM with the same name (43 effects). Only reading was done.
+
+| Item | Result |
+| --- | --- |
+| Files collected | 164 (76 effects, 59 textures, 18 models, 10 accessories, 1 audio file) |
+| References not found | 202 (png 163, fxsub 17, conf 12, pmx 7, fx 3). The pmx names inside fx files were names the effect uses to select objects, not file references |

@@ -87,6 +87,8 @@ Read the file as text and treat the following two kinds as references.
 
 When the target is an fx or fxsub, follow it further.
 
+Names with the extension pmx, pmd or x are names the effect uses to select the objects it applies to, not file references. They are not collected.
+
 ## 4. Procedure for Following References
 
 1. Put the root files (the models, accessories, audio and background of the PMM, and the effects of the EMM) in a work list. Resolve the PMM paths to existing files (MMD Behavior 2.2).
