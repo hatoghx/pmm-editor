@@ -80,12 +80,14 @@ If an EMD with the same name as the model file, differing only in extension, is 
 
 ### 3.6 fx and fxsub
 
-Read the file as text and treat the following two kinds as references.
+Read the file as text, excluding comments (from `//` to the end of the line, and between `/*` and `*/`), and treat the following two kinds as references.
 
 - The target of `#include`
 - File names with an extension inside quotes (textures, fxsub and so on)
 
 When the target is an fx or fxsub, follow it further.
+
+A name specified with `#define` (for example `ALBEDO_MAP_FILE "albedo.png"`) may not be used, depending on a switch in the same fx (for example `ALBEDO_MAP_FROM 3`). When it is not found, put it in the list of items not found; do not treat it as an error.
 
 Names with the extension pmx, pmd or x are names the effect uses to select the objects it applies to, not file references. They are not collected.
 

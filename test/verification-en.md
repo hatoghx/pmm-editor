@@ -189,3 +189,15 @@ The procedure of chapter 11 was applied to a PMM (18 models, 10 accessories, 1 a
 | --- | --- |
 | Files collected | 164 (76 effects, 59 textures, 18 models, 10 accessories, 1 audio file) |
 | References not found | 202 (png 163, fxsub 17, conf 12, pmx 7, fx 3). The pmx names inside fx files were names the effect uses to select objects, not file references |
+
+### 10.1 25 Projects in MMD2
+
+The same procedure was applied to 25 projects in `UserFile\MMD2` (a PMM and, if present, the EMM with the same name). Only reading was done.
+
+| Item | Result |
+| --- | --- |
+| Files collected | Models 226, accessories 121, audio 19, effects 994, textures 1,427 |
+| Items not found | Models 6, audio 1, effects 301, textures 2,573 |
+| Breakdown of references not found | png 2,372, fxsub 228, conf 144, pmx 108, fx 25, jpg 3, wav 1 |
+
+Most of the png files not found came from Ray-MMD material fx files in which `#define ALBEDO_MAP_FROM 3` and `#define ALBEDO_MAP_FILE "albedo.png"` appear together and the file does not exist. References inside comments (for example `//#define NORMAL_FILE "../texture/normal.png"`) were excluded.
