@@ -201,3 +201,7 @@ The same procedure was applied to 25 projects in `UserFile\MMD2` (a PMM and, if 
 | Breakdown of references not found | png 2,372, fxsub 228, conf 144, pmx 108, fx 25, jpg 3, wav 1 |
 
 Most of the png files not found came from Ray-MMD material fx files in which `#define ALBEDO_MAP_FROM 3` and `#define ALBEDO_MAP_FILE "albedo.png"` appear together and the file does not exist. References inside comments (for example `//#define NORMAL_FILE "../texture/normal.png"`) were excluded.
+
+### 10.2 Opening in the Regular MMD
+
+The CHRONIC PMM in `UserFile\MMD2` (18 models, 10 accessories, 1 audio file) was opened from the menu "Open" of the regular MMD 9.32 in the MMD executable folder. No screen reporting a missing model, accessory or audio file appeared, and loading finished. This matches the result that the procedure of chapter 11 found every model, accessory and audio file of the PMM.

@@ -201,3 +201,7 @@ PMM（モデル 18 体、アクセサリ 10 個、音声 1 個）と同じ名前
 | 見つからなかった参照の内訳 | png 2,372、fxsub 228、conf 144、pmx 108、fx 25、jpg 3、wav 1 |
 
 見つからなかった png の多くは、Ray-MMD の材質の fx で、`#define ALBEDO_MAP_FROM 3` と `#define ALBEDO_MAP_FILE "albedo.png"` が並び、ファイルが存在しないものだった。コメントの中の参照（例：`//#define NORMAL_FILE "../texture/normal.png"`）は、読む対象から外した。
+
+### 10.2 通常版の MMD で開く
+
+`UserFile\MMD2` にある CHRONIC の PMM（モデル 18 体、アクセサリ 10 個、音声 1 個）を、MMD の実行フォルダにある通常版の MMD 9.32 のメニューの「開く」から開いた。モデル、アクセサリ、音声が見つからない旨の画面は出ず、読み込みが終わった。11 章の手順で、PMM のモデル、アクセサリ、音声がすべて見つかったことと一致した。
